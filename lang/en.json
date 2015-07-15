@@ -1,0 +1,23 @@
+{
+  "GoogleAuthenticator": {
+    "Menu": "Google Authenticator",
+    "Settings": "Google Authenticator Settings",
+    "DisabledInfo": "Google Authenticator is currently disabled. Please click below to activate Google Authenticator for your account.",
+    "Secret": "Secret",
+    "SecretDescription": "Google Authenticator Secret",
+    "SecretGenerated": "A new secret has been generated. Please rescan the QR-Code or update the secret in Google Authenticator App.",
+    "Activate": "Activate Google Authenticator",
+    "SetUp": "Setup Google Authenticator",
+    "GenerateNewSecret": "Generate new secret",
+    "ToggleQRCode": "Show/Hide QR Code",
+    "QRCodeDescription": "Scan this QR-Code with the Google Authenticator App on your mobile.",
+    "AuthCode": "Auth-Code",
+    "AuthCodeNewDescription": "Please type in the auth code, after updating your Google Authenticator app with the new secret.",
+    "Proceed": "Proceed",
+    "NewSecretSaved": "Your new Google Authenticator secret has been saved.",
+    "Disable": "Disable",
+    "Disabled": "Google Authenticator support for this account has been disabled",
+    "AuthCodeRequired": "Please type in the auth code from your Google Authenticator App.",
+    "AuthCodeInvalid": "Auth-Code not valid"
+  }
+}

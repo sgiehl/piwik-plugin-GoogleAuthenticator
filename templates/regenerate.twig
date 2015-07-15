@@ -1,0 +1,33 @@
+{% extends 'user.twig' %}
+{% block content %}
+
+    <form method="post" action="{{ {} | urlRewriteWithParameters }}">
+        <h2 piwik-enriched-headline>{{ 'GoogleAuthenticator_Settings'|translate }}</h2>
+
+        <div class="alert alert-info">{{ 'GoogleAuthenticator_SecretGenerated'|translate }}</div>
+
+        <div class="form-group">
+            <label for="secret">{{ 'GoogleAuthenticator_Secret'|translate }}</label>
+
+            <div class="form-help">{{ 'GoogleAuthenticator_SecretDescription'|translate }}</div>
+            <input type="text" disabled value="{{ newSecret }}" id="secret"/>
+            <input type="hidden" value="{{ newSecret }}" name="secret"/>
+        </div>
+
+        <div class="form-group">
+            <label for="qrcode">{{ 'GoogleAuthenticator_QRCodeDescription'|translate }}</label>
+            <img id="qrcode" src="{{ googleAuthImage }}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="authcode">{{ 'GoogleAuthenticator_AuthCode'|translate }}</label>
+
+            <div class="form-help">{{ 'GoogleAuthenticator_AuthCodeNewDescription'|translate }}</div>
+            <input type="text" value="" name="authcode" id="authcode"/>
+        </div>
+
+        <input type="hidden" name="authCodeNonce" value="{{ authCodeNonce }}">
+
+        <button type="submit">{{ 'GoogleAuthenticator_Proceed'|translate }}</button>
+    </form>
+{% endblock %}

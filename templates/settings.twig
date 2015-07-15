@@ -1,0 +1,38 @@
+{% extends 'user.twig' %}
+{% block content %}
+    <h2 piwik-enriched-headline>{{ 'GoogleAuthenticator_Settings'|translate }}</h2>
+
+    {% if (googleAuthIsActive) %}
+
+        {% if activated %}
+            <div class="alert alert-success">{{ 'GoogleAuthenticator_NewSecretSaved'|translate }}</div>
+        {% endif %}
+
+        {% if disabled %}
+            <div class="alert alert-warning">{{ 'GoogleAuthenticator_Disabled'|translate }}</div>
+        {% endif %}
+
+        <p id="qrcode" style="border: 1px solid; width: 400px; text-align: center; padding: 15px;">
+            <span style="display: block;">{{ 'GoogleAuthenticator_QRCodeDescription'|translate }}</span>
+            <img src="{{ googleAuthImage }}" style="margin: 0 auto;"/>
+        </p>
+
+        <div class="form-group">
+            <label for="secret">{{ 'GoogleAuthenticator_Secret'|translate }}</label>
+
+            <div class="form-help">{{ 'GoogleAuthenticator_SecretDescription'|translate }}</div>
+            <input type="text" disabled value="{{ googleAuthSecret }}" id="secret"/>
+        </div>
+
+        <a href="{{ {'action':'regenerate'} | urlRewriteWithParameters }}" class="btn">{{ 'GoogleAuthenticator_GenerateNewSecret'|translate }}</a>
+        <a href="{{ {'disable':'1'} | urlRewriteWithParameters }}" class="btn">{{ 'GoogleAuthenticator_Disable'|translate }}</a>
+
+    {% else %}
+
+        <p>{{ 'GoogleAuthenticator_DisabledInfo'|translate }}</p>
+
+        <a href="{{ {'action':'regenerate'} | urlRewriteWithParameters }}"
+           class="btn btn-lg">{{ 'GoogleAuthenticator_SetUp'|translate }}</a>
+
+    {% endif %}
+{% endblock %}
