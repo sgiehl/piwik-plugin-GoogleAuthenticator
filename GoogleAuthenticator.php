@@ -10,23 +10,14 @@ namespace Piwik\Plugins\GoogleAuthenticator;
 
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
+use Piwik\FrontController;
+use Piwik\Plugin\Manager;
 
 /**
  *
  */
 class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
 {
-    /**
-     * @see Piwik\Plugin::getListHooksRegistered
-     */
-    public function getListHooksRegistered()
-    {
-        $hooks = array(
-            'API.Request.authenticate'         => 'ApiRequestAuthenticate',
-        );
-        return $hooks;
-    }
-
     /**
      * Set login name and authentication token for API request.
      * Listens to API.Request.authenticate hook.
@@ -39,4 +30,42 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
         $auth->setTokenAuth($tokenAuth);
         $auth->setAuthCode(Common::getRequestVar('auth_code', '', 'string'));
     }
+
+    /**
+     * Redirects to Login form with error message.
+     * Listens to User.isNotAuthorized hook.
+     */
+    public function noAccess(\Exception $exception)
+    {
+        $frontController = FrontController::getInstance();
+
+        if (Common::isXmlHttpRequest()) {
+            echo $frontController->dispatch('GoogleAuthenticator', 'ajaxNoAccess', array($exception->getMessage()));
+            return;
+        }
+
+        echo $frontController->dispatch('GoogleAuthenticator', 'login', array($exception->getMessage()));
+    }
+
+    /**
+     * Deactivate default Login module, as both cannot be activated together
+     *
+     * TODO: shouldn't disable Login plugin but have to wait until Dependency Injection is added to core
+     */
+    public function activate()
+    {
+        if (Manager::getInstance()->isPluginActivated("Login") == true) {
+            Manager::getInstance()->deactivatePlugin("Login");
+        }
+    }
+    /**
+     * Activate default Login module, as one of them is needed to access Piwik
+     */
+    public function deactivate()
+    {
+        if (Manager::getInstance()->isPluginActivated("Login") == false) {
+            Manager::getInstance()->activatePlugin("Login");
+        }
+    }
+
 }

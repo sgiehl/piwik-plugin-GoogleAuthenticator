@@ -9,7 +9,7 @@
 Adds a userbased possibility to use Google Authenticator 2FA as additional login security.
 Each use can enable/disable this feature in his account settings.
 
-This Plugin is based on the original Piwik Login plugin and needs this one to be active. It will not work with other Login Plugin.
+This Plugin is based on the original Piwik Login plugin and needs this one to be installed but not active.
 
 ATTENTION: Activating Google Authenticator for an account, also requires an auth token for direct API requests with the users token auth.
 
