@@ -11,6 +11,8 @@ Each use can enable/disable this feature in his account settings.
 
 This Plugin is based on the original Piwik Login plugin and needs this one to be active. It will not work with other Login Plugin.
 
+ATTENTION: Activating Google Authenticator for an account, also requires an auth token for direct API requests with the users token auth.
+
 ### Requirements
 
 [Piwik](https://github.com/piwik/piwik) 2.14.0 or higher is required.
