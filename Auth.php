@@ -8,7 +8,9 @@
  */
 namespace Piwik\Plugins\GoogleAuthenticator;
 
+use \Exception;
 use Piwik\AuthResult;
+use Piwik\Session;
 use Piwik\Session\SessionNamespace;
 
 /**
@@ -28,6 +30,12 @@ class Auth extends \Piwik\Plugins\Login\Auth
     protected $authCode = null;
 
     /**
+     * Indicates whether current session was authenticated with an auth code
+     * @var bool
+     */
+    protected $validatedWithAuthCode = null;
+
+    /**
      * Returns authentication module's name
      * @return string
      */
@@ -42,8 +50,13 @@ class Auth extends \Piwik\Plugins\Login\Auth
      */
     protected function setValidatedWithAuthCode($isValid = true)
     {
-        $session = new SessionNamespace('GoogleAuthenticator');
-        $session->validatedWithAuthCode = $isValid;
+        $this->validatedWithAuthCode = $isValid;
+        try {
+            $session = new SessionNamespace('GoogleAuthenticator');
+            $session->validatedWithAuthCode = $isValid;
+        } catch (Exception $e) {
+            // ignore as that should only happen in tests
+        }
     }
 
     /**
@@ -52,9 +65,18 @@ class Auth extends \Piwik\Plugins\Login\Auth
      */
     protected function getValidatedWithAuthCode()
     {
-        $session = new SessionNamespace('GoogleAuthenticator');
-        return (boolean) $session->validatedWithAuthCode;
+        if (!is_null($this->validatedWithAuthCode)) {
+            return $this->validatedWithAuthCode;
+        }
 
+        try {
+            $session = new SessionNamespace('GoogleAuthenticator');
+            $this->validatedWithAuthCode = (boolean)$session->validatedWithAuthCode;
+        } catch (Exception $e) {
+            // ignore as that should only happen in tests
+        }
+
+        return $this->validatedWithAuthCode;
     }
 
     /**

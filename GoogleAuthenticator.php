@@ -11,6 +11,8 @@ namespace Piwik\Plugins\GoogleAuthenticator;
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\FrontController;
+use Piwik\Notification;
+use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 
 /**
@@ -47,6 +49,11 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
         echo $frontController->dispatch('GoogleAuthenticator', 'login', array($exception->getMessage()));
     }
 
+    public function postLoad()
+    {
+        $this->activate();
+    }
+
     /**
      * Deactivate default Login module, as both cannot be activated together
      *
@@ -56,6 +63,9 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
     {
         if (Manager::getInstance()->isPluginActivated("Login") == true) {
             Manager::getInstance()->deactivatePlugin("Login");
+            $notification = new Notification(Piwik::translate('GoogleAuthenticator_LoginPluginDisabled'));
+            $notification->context = Notification::CONTEXT_INFO;
+            Notification\Manager::notify('GoogleAuthenticator_LoginPluginDisabled', $notification);
         }
     }
     /**
