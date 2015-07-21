@@ -1,7 +1,7 @@
 {% extends 'user.twig' %}
 {% block content %}
 
-    <form method="post" action="{{ {} | urlRewriteWithParameters }}">
+    <form method="post" action="{{ {"disable": null, "activate": null} | urlRewriteWithParameters }}">
         <h2 piwik-enriched-headline>{{ 'GoogleAuthenticator_Settings'|translate }}</h2>
 
         <div class="alert alert-info">{{ 'GoogleAuthenticator_SecretGenerated'|translate }}</div>
