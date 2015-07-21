@@ -105,7 +105,6 @@ class Controller extends \Piwik\Plugins\Login\Controller
      */
     function login($messageNoAccess = null, $infoMessage = false)
     {
-        var_dump($this->auth);
         if ($this->auth->isAuthCodeRequired()) {
             return $this->authcode();
         }
