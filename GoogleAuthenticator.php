@@ -68,6 +68,7 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
             Notification\Manager::notify('GoogleAuthenticator_LoginPluginDisabled', $notification);
         }
     }
+
     /**
      * Activate default Login module, as one of them is needed to access Piwik
      */

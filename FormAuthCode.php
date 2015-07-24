@@ -27,7 +27,8 @@ class FormAuthCode extends QuickForm2
             ->addRule('required', Piwik::translate('General_Required', Piwik::translate('General_Username')));
 
         $this->addElement('text', 'form_authcode')
-            ->addRule('required', Piwik::translate('General_Required', Piwik::translate('GoogleAuthenticator_AuthCode')));
+            ->addRule('required',
+                Piwik::translate('General_Required', Piwik::translate('GoogleAuthenticator_AuthCode')));
 
         $this->addElement('hidden', 'form_nonce');
 

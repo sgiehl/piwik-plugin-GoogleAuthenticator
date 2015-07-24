@@ -223,7 +223,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
             $storage = new Storage(Piwik::getCurrentUserLogin());
             $storage->setSecret($secret);
             Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified(array(
-                    'action' => 'settings',
+                    'action'   => 'settings',
                     'activate' => '1'
                 )));
         }

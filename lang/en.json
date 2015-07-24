@@ -11,7 +11,7 @@
     "GenerateNewSecret": "Generate new secret",
     "ToggleQRCode": "Show/Hide QR Code",
     "QRCodeDescription": "Scan this QR-Code with the Google Authenticator App on your mobile.",
-    "AuthCode": "Auth-Code",
+    "AuthCode": "Auth code",
     "AuthCodeNewDescription": "Please type in the auth code, after updating your Google Authenticator app with the new secret.",
     "Proceed": "Proceed",
     "NewSecretSaved": "Your new Google Authenticator secret has been saved.",

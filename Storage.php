@@ -87,12 +87,12 @@ class Storage
      */
     protected function load()
     {
-        $data = Option::get('GoogleAuthentication.'.$this->username);
+        $data = Option::get('GoogleAuthentication.' . $this->username);
         if (!$data) {
             return;
         }
 
-        $data = (array) @unserialize($data);
+        $data = (array)@unserialize($data);
 
         if (isset($data['secret'])) {
             $this->secret = $data['secret'];
@@ -108,12 +108,10 @@ class Storage
     protected function save()
     {
         $data = array(
-            'secret' => $this->secret,
+            'secret'   => $this->secret,
             'isActive' => $this->isActive,
         );
 
-        Option::set('GoogleAuthentication.'.$this->username, serialize($data));
+        Option::set('GoogleAuthentication.' . $this->username, serialize($data));
     }
-
-
 }

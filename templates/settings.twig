@@ -24,8 +24,10 @@
             <input type="text" disabled value="{{ googleAuthSecret }}" id="secret"/>
         </div>
 
-        <a href="{{ {'action':'regenerate'} | urlRewriteWithParameters }}" class="btn">{{ 'GoogleAuthenticator_GenerateNewSecret'|translate }}</a>
-        <a href="{{ {'disable':'1'} | urlRewriteWithParameters }}" class="btn">{{ 'GoogleAuthenticator_Disable'|translate }}</a>
+        <a href="{{ {'action':'regenerate'} | urlRewriteWithParameters }}"
+           class="btn">{{ 'GoogleAuthenticator_GenerateNewSecret'|translate }}</a>
+        <a href="{{ {'disable':'1'} | urlRewriteWithParameters }}"
+           class="btn">{{ 'GoogleAuthenticator_Disable'|translate }}</a>
 
     {% else %}
 

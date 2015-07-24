@@ -399,11 +399,13 @@ class LoginTest extends IntegrationTestCase
 
     protected function _setUpUser()
     {
-        $user = array('login'    => 'user',
-                      'password' => 'geqgeagae',
-                      'email'    => 'test@test.com',
-                      'alias'    => 'alias',
-                      'superuser_access' => 0);
+        $user = array(
+            'login'            => 'user',
+            'password'         => 'geqgeagae',
+            'email'            => 'test@test.com',
+            'alias'            => 'alias',
+            'superuser_access' => 0
+        );
 
         API::getInstance()->addUser($user['login'], $user['password'], $user['email'], $user['alias']);
 
@@ -417,7 +419,7 @@ class LoginTest extends IntegrationTestCase
         API::getInstance()->setSuperUserAccess('user', true);
     }
 
-    private function authenticate($login, $tokenAuth, $authCode=null)
+    private function authenticate($login, $tokenAuth, $authCode = null)
     {
         $this->auth->setLogin($login);
         $this->auth->setTokenAuth($tokenAuth);
