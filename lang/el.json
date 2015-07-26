@@ -1,0 +1,24 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Google Authenticator",
+        "Settings": "Ρυθμίσεις Google Authenticator",
+        "DisabledInfo": "Το Google Authenticator είναι απενεργοποιημένο. Κάντε κλικ παρακάτω για το ενεργοποιήσετε στο λογαριασμό σας.",
+        "Secret": "Συνθηματικό",
+        "SecretDescription": "Συνθηματικό Google Authenticator",
+        "SecretGenerated": "Δημιουργήθηκε ένα νέο συνθηματικό. Παρακαλούμε σαρώστε ξανά τον κωδικό QR ή ενημερώστε το συνθηματικό στην εφαρμογή Google Authenticator.",
+        "Activate": "Ενεργοποίηση του Google Authenticator",
+        "SetUp": "Ρύθμιση του Google Authenticator",
+        "GenerateNewSecret": "Δημιουργία νέου συνθηματικού",
+        "ToggleQRCode": "Εμφάνιση\/απόκρυψη του κωδικού QR",
+        "QRCodeDescription": "Σαρώστε τον κωδικό QR με την εφαρμογή Google Authenticator στο κινητό σας.",
+        "AuthCode": "Κωδικός πιστοποίησης",
+        "AuthCodeNewDescription": "Παρακαλώ εισάγετε τον κωδικό πιστοποίησης, αφού ενημερώστε την εφαρμογή Google Authenticator με το νέο συνθηματικό.",
+        "Proceed": "Συνεχίστε",
+        "NewSecretSaved": "Το νέο συνθηματικό Google Authenticator αποθηκεύθηκε.",
+        "Disable": "Απενεργοποίηση",
+        "Disabled": "Η υποστήριξη για το Google Authenticator για αυτόν τον λογαριασμό έχει απενεργοποιηθεί",
+        "AuthCodeRequired": "Παρακαλώ εισάγετε τον κωδικό πιστοποίησης από την εφαρμογή Google Authenticator.",
+        "AuthCodeInvalid": "Ο κωδικός πιστοποίησης είναι λανθασμένος",
+        "LoginPluginDisabled": "Το πρόσθετο Είσοδος του Piwik απενεργοποιήθηκε αυτόματα, καθώς έρχεται σε σύγκρουση με το Google Authenticator. Αν επιθυμείτε να αλλάξετε στον προκαθορισμένο τρόπο εισόδου (χωρίς το Google Authenticator), απενεργοποιήστε το πρόσθετο Google Authenticator."
+    }
+}
