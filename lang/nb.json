@@ -1,0 +1,14 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Google Authenticator",
+        "Settings": "Google Authenticator-innstillinger",
+        "Secret": "Hemmelighet",
+        "SecretDescription": "Google Authenticator hemmelighet",
+        "Activate": "Aktiver Google Authenticator",
+        "SetUp": "Sett opp Google Authenticator",
+        "ToggleQRCode": "Vis\/skjul QR-kode",
+        "QRCodeDescription": "Skann denne QR-koden med Google Authenticator-appen på din mobiltelefon.",
+        "Proceed": "Fortsett",
+        "Disable": "Deaktiver"
+    }
+}

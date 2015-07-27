@@ -1,0 +1,24 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Google Authenticator",
+        "Settings": "Impostazioni di Google Authenticator",
+        "DisabledInfo": "Google Authenticator è attualmente disabilitato. Si prega di cliccare qui sotto per attivarlo per il tuo account.",
+        "Secret": "Chiave Segreta",
+        "SecretDescription": "Chiave segreta Google Authenticator",
+        "SecretGenerated": "È stata generata una nuova chiave segreta. Si prega di scansionare nuovamente il QR Code o di aggiornare la chiave segreta nell'app Google Authenticator.",
+        "Activate": "Attiva Google Authenticator",
+        "SetUp": "Imposta Google Authenticator",
+        "GenerateNewSecret": "Genera una nuova chiave segreta",
+        "ToggleQRCode": "Mostra\/Nascondi QR Code",
+        "QRCodeDescription": "Scansiona questo QR Code con l'app Google Authenticator del tuo dispositivo mobile.",
+        "AuthCode": "Aut Code",
+        "AuthCodeNewDescription": "Digita l'auth code, dopo avere aggiornato la tua app Google Authenticator con la nuova chiave segreta.",
+        "Proceed": "Procedi",
+        "NewSecretSaved": "La tua nuova chiave segreta di Google Authenticator è stata salvata.",
+        "Disable": "Disabilita",
+        "Disabled": "Il supporto di Google Authenticator per questo account è stato disabilitato",
+        "AuthCodeRequired": "Digita l'auth code dalla tua app Google Authenticator.",
+        "AuthCodeInvalid": "Aut Code non valido",
+        "LoginPluginDisabled": "Il plugin Piwik Login è stato disabilitato automaticamente perché in conflitto con Google Authenticator. Al fine di tornare all'autenticazione predefinita (senza Google Authenticator), si prega di disabilitare il plugin Google Authenticator."
+    }
+}
