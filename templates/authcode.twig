@@ -64,9 +64,8 @@
                     <input type="text" name="form_login" id="login_form_login" class="input" value="{{ login }}"
                            size="20"
                            readonly/>
-                    <input type="password" name="form_authcode" id="login_form_password" class="input" value=""
-                           size="20"
-                           tabindex="20"
+                    <input type="text" name="form_authcode" id="login_form_authcode" class="input" value=""
+                           size="20" autocomplete="off" tabindex="20"
                            placeholder="{{ 'GoogleAuthenticator_AuthCode'|translate }}"/>
                     <input type="hidden" name="form_nonce" id="authcode_nonce" value="{{ nonce }}"/>
                     <input type="hidden" name="form_rememberme" id="login_form_rememberme" value="{{ rememberMe }}"/>

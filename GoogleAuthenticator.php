@@ -49,6 +49,12 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
         echo $frontController->dispatch('GoogleAuthenticator', 'login', array($exception->getMessage()));
     }
 
+    public function getStylesheetFiles(&$stylesheetFiles)
+    {
+        parent::getStylesheetFiles($stylesheetFiles);
+        $stylesheetFiles[] = "plugins/GoogleAuthenticator/stylesheets/styles.less";
+    }
+
     public function postLoad()
     {
         $this->activate();
