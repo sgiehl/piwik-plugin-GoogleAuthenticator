@@ -45,6 +45,10 @@ class Controller extends \Piwik\Plugins\Login\Controller
             $sessionInitializer = new SessionInitializer();
         }
 
+        if (empty($passwordResetter)) {
+            $passwordResetter = new PasswordResetter(null, 'GoogleAuthenticator');
+        }
+
         parent::__construct($passwordResetter, $auth, $sessionInitializer);
     }
 
