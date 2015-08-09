@@ -23,7 +23,7 @@ use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
  * @group Plugins
  * @group GoogleAuthenticator
  */
-class LoginTest extends IntegrationTestCase
+class GoogleAuthenticatorTest extends IntegrationTestCase
 {
 
     /**

@@ -5,7 +5,7 @@
   "theme": false,
   "keywords": ["login", "authentication", "2FA", "google", "authenticator"],
   "license": "BSD & GPL v3+",
-  "homepage": "https://github.com/sgiehl/plugin-GoogleAuthenticator",
+  "homepage": "https://github.com/sgiehl/piwik-plugin-GoogleAuthenticator",
   "require": {
     "piwik": ">=2.14.0",
     "php": ">=5.4.0"
