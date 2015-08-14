@@ -217,15 +217,21 @@ class Controller extends \Piwik\Plugins\Login\Controller
 
         $googleAuth = new PHPGangsta\GoogleAuthenticator();
 
-        $secret = Common::getRequestVar('secret', '', 'string');
-        $authCode = Common::getRequestVar('authcode', '', 'string');
+        $storage = new Storage(Piwik::getCurrentUserLogin());
+        $secret = Common::getRequestVar('gasecret', '', 'string');
+        $authCode = Common::getRequestVar('gaauthcode', '', 'string');
         $authCodeNonce = Common::getRequestVar('authCodeNonce', '', 'string');
+        $title = Common::getRequestVar('gatitle', $storage->getTitle(), 'string');
+        $description = Common::getRequestVar('gadescription', $storage->getDescription(), 'string');
 
         if (!empty($secret) && !empty($authCode) && Nonce::verifyNonce(self::AUTH_CODE_NONCE, $authCodeNonce) &&
             $googleAuth->verifyCode($secret, $authCode, 2)
         ) {
-            $storage = new Storage(Piwik::getCurrentUserLogin());
             $storage->setSecret($secret);
+            $storage->setDescription($description);
+            $storage->setTitle($title);
+            $this->auth->setAuthCode($authCode);
+            $this->auth->validateAuthCode();
             Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified(array(
                     'action'   => 'settings',
                     'activate' => '1'
@@ -236,12 +242,12 @@ class Controller extends \Piwik\Plugins\Login\Controller
             $secret = $googleAuth->createSecret(32);
         }
 
+        $view->title = $title;
+        $view->description = $description;
         $view->authCodeNonce = Nonce::getNonce(self::AUTH_CODE_NONCE);
         $view->newSecret = $secret;
-        $view->googleAuthImage = $googleAuth->getQRCodeGoogleUrl(Piwik::getCurrentUserLogin(), $secret,
-            'Piwik - ' . Url::getCurrentHost());
+        $view->googleAuthImage = $googleAuth->getQRCodeGoogleUrl($description, $secret, $title);
 
         return $view->render();
     }
-
 }

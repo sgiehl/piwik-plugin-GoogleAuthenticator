@@ -55,6 +55,12 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
         $stylesheetFiles[] = "plugins/GoogleAuthenticator/stylesheets/styles.less";
     }
 
+    public function getJsFiles(&$javascriptFiles)
+    {
+        parent::getJsFiles($javascriptFiles);
+        $javascriptFiles[] = "plugins/GoogleAuthenticator/javascripts/settings.js";
+    }
+
     public function postLoad()
     {
         $this->activate();

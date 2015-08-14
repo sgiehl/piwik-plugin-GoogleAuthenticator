@@ -9,6 +9,8 @@
 namespace Piwik\Plugins\GoogleAuthenticator;
 
 use Piwik\Option;
+use Piwik\Piwik;
+use Piwik\Url;
 
 class Storage
 {
@@ -25,6 +27,18 @@ class Storage
     private $secret = '';
 
     /**
+     * Google Authenticator title
+     * @var string
+     */
+    private $title = '';
+
+    /**
+     * Google Authenticator description
+     * @var string
+     */
+    private $description = '';
+
+    /**
      * Indicates if Google Authenticator is active for current user
      * @var bool
      */
@@ -33,6 +47,8 @@ class Storage
     public function __construct($username)
     {
         $this->username = $username;
+        $this->title = 'Piwik - ' . Url::getCurrentHost();
+        $this->description = Piwik::getCurrentUserLogin();
         $this->load();
     }
 
@@ -53,6 +69,44 @@ class Storage
     public function getSecret()
     {
         return $this->secret;
+    }
+
+    /**
+     * Set Google Authenticator title
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        $this->save();
+    }
+
+    /**
+     * Returns Google Authenticator title
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set Google Authenticator description
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        $this->save();
+    }
+
+    /**
+     * Returns Google Authenticator description
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -100,6 +154,12 @@ class Storage
         if (isset($data['isActive'])) {
             $this->isActive = $data['isActive'];
         }
+        if (isset($data['title'])) {
+            $this->title = $data['title'];
+        }
+        if (isset($data['description'])) {
+            $this->description = $data['description'];
+        }
     }
 
     /**
@@ -108,8 +168,10 @@ class Storage
     protected function save()
     {
         $data = array(
-            'secret'   => $this->secret,
-            'isActive' => $this->isActive,
+            'title'        => $this->title,
+            'description'  => $this->description,
+            'secret'       => $this->secret,
+            'isActive'     => $this->isActive,
         );
 
         Option::set('GoogleAuthentication.' . $this->username, serialize($data));
