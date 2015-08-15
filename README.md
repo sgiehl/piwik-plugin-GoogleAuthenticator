@@ -23,6 +23,10 @@ ATTENTION: Activating Google Authenticator for an account, also requires an auth
 
 ## Changelog
 
+- 0.1.0 Added possibility to define title and description for Google Authenticator app
+- 0.0.4 fixes password reset link
+- 0.0.3 small improvements
+- 0.0.2 Added first translations
 - 0.0.1 Initial release
 
 ## Support
