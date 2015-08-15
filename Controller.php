@@ -64,7 +64,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
 
         $form = new FormAuthCode();
         $form->removeAttribute('action'); // remove action attribute, otherwise hash part will be lost
-        if ($form->validate()) {
+        if ($form->getSubmitValue('form_authcode') && $form->validate()) {
             $nonce = $form->getSubmitValue('form_nonce');
             if (Nonce::verifyNonce('Login.login', $nonce)) {
                 $this->auth->setAuthCode($form->getSubmitValue('form_authcode'));
