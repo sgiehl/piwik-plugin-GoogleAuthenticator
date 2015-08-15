@@ -9,6 +9,10 @@
         "ToggleQRCode": "Vis\/skjul QR-kode",
         "QRCodeDescription": "Skann denne QR-koden med Google Authenticator-appen på din mobiltelefon.",
         "Proceed": "Fortsett",
-        "Disable": "Deaktiver"
+        "Title": "Tittel",
+        "Description": "Beskrivelse",
+        "Change": "Endre",
+        "Disable": "Deaktiver",
+        "Disabled": "Google Authenticator-støtte for denne kontoen har blitt deaktivert"
     }
 }

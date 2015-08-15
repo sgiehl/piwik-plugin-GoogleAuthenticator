@@ -1,0 +1,24 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Authentification Google",
+        "Settings": "Paramètres d'authentification Google",
+        "DisabledInfo": "L'authentification Google est actuellement désactivée. Veuillez cliquer ci-dessous pour activer l'authentification Google pour votre compte.",
+        "Secret": "Secret",
+        "SecretDescription": "Secret d'authentification Google",
+        "SecretGenerated": "Un nouveau secret a été généré. Veuillez scanner à nouveau le QR-Code ou mettre à jour le secret dans l'application Authentification Google.",
+        "Activate": "Activer l'authentification Google",
+        "SetUp": "Mettre en place l'authentification Google",
+        "GenerateNewSecret": "Générer un nouveau secret",
+        "ToggleQRCode": "Afficher\/Masquer le code QR",
+        "QRCodeDescription": "Scannez ce QR-Code avec l'application d'authentification Google sur votre mobile.",
+        "AuthCode": "Code d'authentification",
+        "AuthCodeNewDescription": "Veuillez saisir le code d'authentification après avoir mise à jour votre application Authentification Google avec le nouveau secret.",
+        "Proceed": "Continuer",
+        "NewSecretSaved": "Votre nouveau secret d'authentification Google a été enregistré.",
+        "Disable": "Désactiver",
+        "Disabled": "Le support de l'authentification Google pour ce compte a été désactivé.",
+        "AuthCodeRequired": "Veuillez saisir le code d'authentification provenant de votre application Authentification Google.",
+        "AuthCodeInvalid": "Code d'authentification non valide",
+        "LoginPluginDisabled": "Le composant d'authentification de Piwik a été désactivé automatiquement car il causerait des conflits avec l'authentification Google. Pour revenir au système d'authentification par défaut (sans l'authentification Google), veuillez désactiver le composant d'authentification Google."
+    }
+}
