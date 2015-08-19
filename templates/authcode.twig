@@ -62,10 +62,9 @@
                 <h1>{{ 'Login_LogIn'|translate }}</h1>
                 <fieldset class="inputs">
                     <input type="text" name="form_login" id="login_form_login" class="input" value="{{ login }}"
-                           size="20"
-                           readonly/>
+                           size="20" readonly/>
                     <input type="text" name="form_authcode" id="login_form_authcode" class="input" value=""
-                           size="20" autocomplete="off" tabindex="20"
+                           size="20" autocomplete="off" tabindex="1" autofocus
                            placeholder="{{ 'GoogleAuthenticator_AuthCode'|translate }}"/>
                     <input type="hidden" name="form_nonce" id="authcode_nonce" value="{{ nonce }}"/>
                     <input type="hidden" name="form_rememberme" id="login_form_rememberme" value="{{ rememberMe }}"/>
@@ -74,7 +73,7 @@
                 <fieldset class="actions">
                     <a href="{{ logouturl }}">{{ 'General_Cancel'|translate }}</a>
                     <input class="submit" id='login_form_submit' type="submit" value="{{ 'Login_LogIn'|translate }}"
-                           tabindex="100"/>
+                           tabindex="2"/>
                 </fieldset>
             </form>
 
