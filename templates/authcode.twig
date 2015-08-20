@@ -59,7 +59,7 @@
                 {% endif %}
             </div>
             <form {{ form_data.attributes|raw }} ng-non-bindable>
-                <h1>{{ 'Login_LogIn'|translate }}</h1>
+                <h1>{{ formTitle }}</h1>
                 <fieldset class="inputs">
                     <input type="text" name="form_login" id="login_form_login" class="input" value="{{ login }}"
                            size="20" readonly/>

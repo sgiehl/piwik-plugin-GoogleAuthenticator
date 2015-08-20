@@ -27,6 +27,8 @@ class Controller extends \Piwik\Plugins\Login\Controller
      */
     private $auth;
 
+    private $passwordResetter;
+
     /**
      * Constructor.
      *
@@ -46,10 +48,20 @@ class Controller extends \Piwik\Plugins\Login\Controller
         }
 
         if (empty($passwordResetter)) {
-            $passwordResetter = new PasswordResetter(null, 'GoogleAuthenticator');
+            $this->passwordResetter = new PasswordResetter(null, 'GoogleAuthenticator');
         }
 
-        parent::__construct($passwordResetter, $auth, $sessionInitializer);
+        parent::__construct($this->passwordResetter, $auth, $sessionInitializer);
+    }
+
+    protected function getAuthCodeForm()
+    {
+        static $form;
+        if (empty($form)) {
+            $form = new FormAuthCode();
+            $form->removeAttribute('action'); // remove action attribute, otherwise hash part will be lost
+        }
+        return $form;
     }
 
     /**
@@ -62,14 +74,14 @@ class Controller extends \Piwik\Plugins\Login\Controller
     {
         $rememberMe = Common::getRequestVar('form_rememberme', '0', 'string') == '1';
 
-        $form = new FormAuthCode();
-        $form->removeAttribute('action'); // remove action attribute, otherwise hash part will be lost
+        $form = $this->getAuthCodeForm();
         if ($form->getSubmitValue('form_authcode') && $form->validate()) {
             $nonce = $form->getSubmitValue('form_nonce');
             if (Nonce::verifyNonce('Login.login', $nonce)) {
                 $this->auth->setAuthCode($form->getSubmitValue('form_authcode'));
                 if ($this->auth->validateAuthCode()) {
                     try {
+                        $rememberMe = Common::getRequestVar('form_rememberme', '0', 'string') == '1';
                         $this->authenticateAndRedirect($this->auth->getLogin(), null, $rememberMe);
                     } catch (\Exception $e) {
                     }
@@ -82,21 +94,36 @@ class Controller extends \Piwik\Plugins\Login\Controller
             }
         }
 
+        return $this->renderAuthCode($this->auth->getLogin(), Piwik::translate('Login_LogIn'), $rememberMe, $messageNoAccess);
+    }
+
+    /**
+     * Renders form to ask user for an auth code
+     *
+     * @param string $login
+     * @param int $rememberMe
+     * @param string $messageNoAccess
+     * @return string
+     */
+    public function renderAuthCode($login, $formTitle, $rememberMe = 0, $messageNoAccess = null)
+    {
         $view = new View('@GoogleAuthenticator/authcode');
         $view->logouturl = Url::getCurrentUrlWithoutQueryString() . '?' . Url::getQueryStringFromParameters(array(
                 'module' => $this->auth->getName(),
                 'action' => 'logout'
             ));
-        $view->login = $this->auth->getLogin();
+        $view->login = $login;
+        $view->formTitle = $formTitle;
         $view->AccessErrorString = $messageNoAccess;
         $view->infoMessage = Piwik::translate('GoogleAuthenticator_AuthCodeRequired');
         $view->rememberMe = $rememberMe;
         $this->configureView($view);
-        $view->addForm($form);
+        $view->addForm($this->getAuthCodeForm());
         self::setHostValidationVariablesView($view);
 
         return $view->render();
     }
+
 
     /**
      * Pretty the same as in login action of Login plugin
@@ -107,10 +134,15 @@ class Controller extends \Piwik\Plugins\Login\Controller
      * @internal param string $currentUrl Current URL
      * @return string
      */
-    function login($messageNoAccess = null, $infoMessage = false)
+    public function login($messageNoAccess = null, $infoMessage = false)
     {
         if ($this->auth->isAuthCodeRequired()) {
             return $this->authcode();
+        }
+
+        if (!Piwik::isUserIsAnonymous()) {
+            $urlToRedirect = Url::getCurrentUrlWithoutQueryString();
+            Url::redirectToUrl($urlToRedirect);
         }
 
         $form = new \Piwik\Plugins\Login\FormLogin();
@@ -143,6 +175,65 @@ class Controller extends \Piwik\Plugins\Login\Controller
         return $view->render();
     }
 
+
+    /**
+     * Password reset confirmation action. Finishes the password reset process.
+     * Users visit this action from a link supplied in an email.
+     */
+    public function confirmResetPassword($messageNoAccess = null)
+    {
+        $login = Common::getRequestVar('login', '');
+        $storage = new Storage($login);
+
+        $authCodeValidOrNotRequired = !$storage->isActive();
+
+        if (!$authCodeValidOrNotRequired) {
+            $googleAuth = new PHPGangsta\GoogleAuthenticator();
+            $form = $this->getAuthCodeForm();
+
+            if ($form->getSubmitValue('form_authcode') && $form->validate()) {
+                $nonce = $form->getSubmitValue('form_nonce');
+                if (Nonce::verifyNonce('Login.login', $nonce)) {
+                    if ($googleAuth->verifyCode($storage->getSecret(), $form->getSubmitValue('form_authcode'))) {
+                        $authCodeValidOrNotRequired = true;
+                    }
+
+                    Nonce::discardNonce('Login.login');
+                    $form->getElements()[0]->setError(Piwik::translate('GoogleAuthenticator_AuthCodeInvalid'));
+                } else {
+                    $messageNoAccess = $this->getMessageExceptionNoAccess();
+                }
+            }
+
+            if (!$authCodeValidOrNotRequired) {
+                return $this->renderAuthCode($login, Piwik::translate('General_ChangePassword'), 0, $messageNoAccess);
+            }
+        }
+
+        return parent::confirmResetPassword();
+    }
+
+    /**
+     * The action used after a password is successfully reset. Displays the login
+     * screen with an extra message. A separate action is used instead of returning
+     * the HTML in confirmResetPassword so the resetToken won't be in the URL.
+     */
+    public function resetPasswordSuccess()
+    {
+        $urlToRedirect = Url::getCurrentUrlWithoutQueryString();
+        $urlToRedirect .= '?' . Url::getQueryStringFromParameters(array(
+                'module' => 'GoogleAuthenticator',
+                'action' => 'passwordchanged'
+            ));
+
+
+        Url::redirectToUrl($urlToRedirect);
+    }
+
+    public function passwordchanged()
+    {
+        return $this->login($errorMessage = null, $infoMessage = Piwik::translate('Login_PasswordChanged'));
+    }
 
     /**
      * Configure common view properties
@@ -233,7 +324,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
             $this->auth->setAuthCode($authCode);
             $this->auth->validateAuthCode();
             Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified(array(
-                    'action'   => 'settings',
+                    'action' => 'settings',
                     'activate' => '1'
                 )));
         }
