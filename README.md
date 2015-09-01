@@ -13,9 +13,13 @@ This Plugin is based on the original Piwik Login plugin and needs this one to be
 
 ATTENTION: Activating Google Authenticator for an account, also requires an auth code for direct API requests with the users token auth. Use ```&auth_code={authcode}``` to do that.
 
+Applications accessing your Piwik data using the API might thus no longer work. This also affects all versions of Piwik Mobile. To avoid this create a read only user account in Piwik to use it in those applications.
+
 ### Requirements
 
 [Piwik](https://github.com/piwik/piwik) 2.14.0 or higher is required.
+
+Google Authenticator App for [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2), [iOS](https://itunes.apple.com/de/app/google-authenticator/id388497605?mt=8) or [Blackberry](https://m.google.com/authenticator) needs to be [installed](https://support.google.com/accounts/answer/1066447?hl=de) on your mobile device
 
 ### Features
 
