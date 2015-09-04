@@ -23,13 +23,6 @@ use Piwik\View;
 class Controller extends \Piwik\Plugins\Login\Controller
 {
     /**
-     * @var Auth
-     */
-    private $auth;
-
-    private $passwordResetter;
-
-    /**
      * Constructor.
      *
      * @param PasswordResetter $passwordResetter
@@ -38,11 +31,6 @@ class Controller extends \Piwik\Plugins\Login\Controller
      */
     public function __construct($passwordResetter = null, $auth = null, $sessionInitializer = null)
     {
-        if (empty($auth)) {
-            $auth = StaticContainer::get('Piwik\Auth');
-        }
-        $this->auth = $auth;
-
         if (empty($sessionInitializer)) {
             $sessionInitializer = new SessionInitializer();
         }
@@ -233,21 +221,6 @@ class Controller extends \Piwik\Plugins\Login\Controller
     public function passwordchanged()
     {
         return $this->login($errorMessage = null, $infoMessage = Piwik::translate('Login_PasswordChanged'));
-    }
-
-    /**
-     * Configure common view properties
-     *
-     * @param View $view
-     */
-    private function configureView($view)
-    {
-        $this->setBasicVariablesView($view);
-
-        $view->linkTitle = Piwik::getRandomTitle();
-
-        // crsf token: don't trust the submitted value; generate/fetch it from session data
-        $view->nonce = Nonce::getNonce('Login.login');
     }
 
     /**
