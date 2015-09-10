@@ -1,0 +1,28 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Google Authenticatie",
+        "Settings": "Google AUthenticator instellingen",
+        "DisabledInfo": "Google AUthenticator is momenteel uitgeschakeld; Gelieve hieronder te klikken om de Google authenticator in te schakelen voor je account",
+        "Secret": "Geheim",
+        "SecretDescription": "Google Authenticator Geheim",
+        "SecretGenerated": "Een nieuw geheim is gegenereerd. Gelieve de QR code opnieuw in te scannen of pas het geheim aan in de Google Authenticator Applicatie",
+        "Activate": "Activeer Google AUthenticator",
+        "SetUp": "Stel de Google AUthenticator in",
+        "GenerateNewSecret": "Genereer nieuw geheim",
+        "ToggleQRCode": "Bekijk\/Verberg QR Code",
+        "QRCodeDescription": "Scan deze QR code met de Google Authenticator op je smartphone.",
+        "AuthCode": "Authenticatie code",
+        "AuthCodeNewDescription": "Gelieve de authenticatie code in te voeren, nadat je de Google Authenticator applicatie hebt aangepast met je nieuw geheim.",
+        "Proceed": "Ga verder",
+        "NewSecretSaved": "Je nieuwe Google Authenticator geheim is bewaard",
+        "Title": "Titel",
+        "TitleDescription": "Titel die wordt weergegeven in de Google Authenticator applicatie",
+        "Description": "Beschrijving",
+        "DescriptionDescription": "Beschrijving die wordt weergegeven in de Google Authenticator applicatie.",
+        "Change": "Wijzigen",
+        "Disable": "Uitschakelen",
+        "Disabled": "Google Authenticator ondersteuning voor dit account is uitgeschakeld.",
+        "AuthCodeRequired": "Gelieve de Autorisatie code van je Google Authenticator applicatie in te geven",
+        "AuthCodeInvalid": "Authenticatie code ongeldig"
+    }
+}

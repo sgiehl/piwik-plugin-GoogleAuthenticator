@@ -1,0 +1,29 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Gugl autentifikator",
+        "Settings": "Podešavanja Gugl autentifikatora",
+        "DisabledInfo": "Gugl autentifikator je isključen. Kliknite ispod ako želite da uključite Gugl autentifikator za vaš sajt.",
+        "Secret": "Tajna",
+        "SecretDescription": "Gugl autentifikator tajna",
+        "SecretGenerated": "Generisana je nova tajna. Molimo vas da ponovo skenirate QR kod ili da ažurirate tajnu u Gugl autentifikator aplikaciji.",
+        "Activate": "Aktivacija Gugl autentifikatora",
+        "SetUp": "Podešavanje Gugl autentifikatora",
+        "GenerateNewSecret": "Generisanje nove tajne",
+        "ToggleQRCode": "Prikaži\/sakrij QR kod",
+        "QRCodeDescription": "Skenirajte ovaj QR kod sa Gugl autentifikator aplikacijom na vašem mobilnom.",
+        "AuthCode": "Kod za autentifikaciju",
+        "AuthCodeNewDescription": "Molimo vas da upišete kod za autentifikaciju nakon što ažurirate Gugl autentifikator aplikaciju novom tajnom.",
+        "Proceed": "Nastavak",
+        "NewSecretSaved": "Vaša nova Gugl autentifikator tajna je sačuvana.",
+        "Title": "Naziv",
+        "TitleDescription": "Naziv koji će biti prikazan u vašoj Gugl autentifikator aplikaciji.",
+        "Description": "Opis",
+        "DescriptionDescription": "Opis koji će biti prikazan u vašoj Gugl autentifikator aplikaciji.",
+        "Change": "Izmena",
+        "Disable": "Isključi",
+        "Disabled": "Podrška za Gugl autentifikator za ovaj nalog je isključena.",
+        "AuthCodeRequired": "Molimo vas da upišete kod za autentifikaciju iz vaše Gugl autentifikator aplikacije.",
+        "AuthCodeInvalid": "Kod za autentifikaciju nije validan.",
+        "LoginPluginDisabled": "Pivik dodatak za prijavljivanje je automatski isključen s obzirom na to da je u konfliktu sa Gugl autentifikatorom. Ukoliko želite da se vratite na podrazumevanu prijavu (bez Gugl autentifikatora), molimo vas da isključite dodatak za Gugl autentifikator."
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Google Authenticator",
+        "Settings": "Nastavení Google Authenticator",
+        "DisabledInfo": "Váš účet",
+        "Secret": "Tajemství",
+        "SecretDescription": "Tajemství Google Authenticator",
+        "SecretGenerated": "Bylo vygenerováno nové tajemství. Znovu naskenujte QR kód, nebo ho aktualizujte v Google Authenticatoru.",
+        "Activate": "Aktivovat Google Authenticator",
+        "SetUp": "Nastavit Google Authenticator",
+        "GenerateNewSecret": "Vygenerovat nové tajemství",
+        "ToggleQRCode": "Zobrazit\/skrýt QR kód",
+        "QRCodeDescription": "Naskenujte tento QR kód aplikací Google Authenticator na vašem mobilu.",
+        "AuthCode": "Autentizační kód",
+        "AuthCodeNewDescription": "Po aktualizaci tajemství ve vaší aplikace Google Authenticator zde zadejte autentizační kód.",
+        "Proceed": "Pokračovat",
+        "NewSecretSaved": "Vaše nové tajemství pro Google Authenticator bylo uloženo.",
+        "Title": "Titulek",
+        "TitleDescription": "Titulek zobrazovaný ve vaší aplikaci Google Authenticator",
+        "Description": "Popis",
+        "DescriptionDescription": "Popis zobrazovaný ve vaší aplikaci Google Authenticator.",
+        "Change": "Změnit",
+        "Disable": "Zakázat",
+        "Disabled": "Podpora Google Authenticatoru pro tento účet byla zakázána",
+        "AuthCodeRequired": "Prosím, zde zadejte autentizační kód z vaší aplikace Google Authenticator.",
+        "AuthCodeInvalid": "Autentizační kód neplatný",
+        "LoginPluginDisabled": "Zásuvný modul přihlášení přes Piwik byl automaticky zakázán, protože je v konfliktu s Google Authenticatorem. Pokud se chcete vrátit zpět k přihlášení bez Google Authenticatoru, zakažte jeho zásuvný modul."
+    }
+}
