@@ -55,6 +55,8 @@ install:
 
   - ./tests/travis/checkout_test_against_branch.sh
 
+  - '[ "$PLUGIN_NAME" == "" ] || [ ! -f ./tests/travis/check_plugin_compatible_with_piwik.php ] || php ./tests/travis/check_plugin_compatible_with_piwik.php "$PLUGIN_NAME"'
+
   - '[ ! -f ./tests/travis/install_mysql_5.6.sh ] || ./tests/travis/install_mysql_5.6.sh'
 
   # Make sure we use Python 2.6
@@ -75,7 +77,7 @@ install:
   - ./tests/travis/checkout_dependent_plugins.sh
 
 before_script:
-  - phpenv config-rm xdebug.ini;
+  - if [[ "$TRAVIS_PHP_VERSION" != 7* ]]; then phpenv config-rm xdebug.ini; fi
 
   # add always_populate_raw_post_data=-1 to php.ini
   - echo "always_populate_raw_post_data=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
