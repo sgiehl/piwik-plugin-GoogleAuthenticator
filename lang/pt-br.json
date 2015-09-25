@@ -1,0 +1,28 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Autenticador Google",
+        "Settings": "Configurações do Autenticador Google",
+        "DisabledInfo": "O Autenticador do Google está desativado. Clique abaixo para ativar o Autenticador do Google em sua conta.",
+        "Secret": "Segredo",
+        "SecretDescription": "Autenticador Secreto Google",
+        "SecretGenerated": "Um novo segredo foi gerado. Por favor, re-escaneie o código-QR ou atualize o segredo no Aplicativo Autenticador do Google.",
+        "Activate": "Ativar Autenticador Google",
+        "SetUp": "Configurar Autenticador Google",
+        "GenerateNewSecret": "Gerar novo segredo",
+        "ToggleQRCode": "Mostrar\/Esconder Código QR",
+        "QRCodeDescription": "Digitalize este Código QR com o Aplicativo Google Autenticador no seu celular.",
+        "AuthCode": "Código de autenticação",
+        "AuthCodeNewDescription": "Por favor, digite o código de autenticação depois de atualizar seu aplicativo Google Autenticador com o novo segredo.",
+        "Proceed": "Prosseguir",
+        "NewSecretSaved": "Seu novo segredo do Autenticador Google foi salvo.",
+        "Title": "Título",
+        "TitleDescription": "Título para ser exibido no seu aplicativo Autenticador Google.",
+        "Description": "Descrição",
+        "DescriptionDescription": "Descrição para ser exibida no seu aplicativo Autenticador Google.",
+        "Change": "Mudar",
+        "Disable": "Desativar",
+        "Disabled": "O suporte do Autenticador Google para esta conta foi desativado",
+        "AuthCodeRequired": "Por favor, digite o código de autenticação de seu Aplicativo Autenticador Google.",
+        "AuthCodeInvalid": "Código de Autenticação não válido"
+    }
+}

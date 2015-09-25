@@ -2,7 +2,7 @@
     "GoogleAuthenticator": {
         "Menu": "Google Authenticatie",
         "Settings": "Google AUthenticator instellingen",
-        "DisabledInfo": "Google AUthenticator is momenteel uitgeschakeld; Gelieve hieronder te klikken om de Google authenticator in te schakelen voor je account",
+        "DisabledInfo": "Google Authenticator is momenteel uitgeschakeld; Gelieve hieronder te klikken om de Google authenticator in te schakelen voor je account",
         "Secret": "Geheim",
         "SecretDescription": "Google Authenticator Geheim",
         "SecretGenerated": "Een nieuw geheim is gegenereerd. Gelieve de QR code opnieuw in te scannen of pas het geheim aan in de Google Authenticator Applicatie",
@@ -23,6 +23,7 @@
         "Disable": "Uitschakelen",
         "Disabled": "Google Authenticator ondersteuning voor dit account is uitgeschakeld.",
         "AuthCodeRequired": "Gelieve de Autorisatie code van je Google Authenticator applicatie in te geven",
-        "AuthCodeInvalid": "Authenticatie code ongeldig"
+        "AuthCodeInvalid": "Authenticatie code ongeldig",
+        "LoginPluginDisabled": "De standaard Login Plugin is uitgeschakeld, omdat het conflicteerd met de Google Authenticator plugin. Om over te schakelen naar de standaard Login (zonder Google Authenticator), dien je de Google Authenticator Plugin uit te schakelen."
     }
 }

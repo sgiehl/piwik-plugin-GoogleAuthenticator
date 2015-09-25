@@ -1,0 +1,12 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Google Authenticator",
+        "Settings": "Google Authenticator-inställningar",
+        "DisabledInfo": "Google Authenticator är för närvarande avaktiverat. Klicka här nedanför för att aktivera Google Authenticator till ditt konto.",
+        "Secret": "Hemlig",
+        "Title": "Titel",
+        "Description": "Beskrivning",
+        "Change": "Ändra",
+        "Disable": "Inaktivera"
+    }
+}
