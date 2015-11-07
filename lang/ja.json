@@ -1,0 +1,17 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Google 認証システム",
+        "Settings": "Google 認証システムの設定",
+        "Secret": "秘密",
+        "Activate": "Google 認証システムをアクティブにします。",
+        "SetUp": "Google 認証システムを設定します。",
+        "ToggleQRCode": "QR コードの表示\/非表示",
+        "AuthCode": "認証コード",
+        "Proceed": "続行",
+        "Title": "タイトル",
+        "Description": "説明",
+        "Change": "変更",
+        "Disable": "無効",
+        "AuthCodeInvalid": "認証コードが無効です。"
+    }
+}
