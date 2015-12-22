@@ -2,16 +2,28 @@
     "GoogleAuthenticator": {
         "Menu": "Google 認証システム",
         "Settings": "Google 認証システムの設定",
+        "DisabledInfo": "Google 認証は現在無効になっています。アカウントの Google 認証を有効にするには以下をクリックしてください。",
         "Secret": "秘密",
+        "SecretDescription": "Google 認証システムの秘密鍵",
+        "SecretGenerated": "新しい秘密鍵が生成されています。QR コードを再スキャンまたはGoogle 認証 App で秘密鍵を更新してください。",
         "Activate": "Google 認証システムをアクティブにします。",
         "SetUp": "Google 認証システムを設定します。",
+        "GenerateNewSecret": "新しい秘密鍵を生成",
         "ToggleQRCode": "QR コードの表示\/非表示",
+        "QRCodeDescription": "お使いの携帯で Google 認証アプリを使用し、この QR コードをスキャンします。",
         "AuthCode": "認証コード",
+        "AuthCodeNewDescription": "新しい秘密鍵を使用してGoogle認証システムアプリを更新した後、認証コードを入力してください。",
         "Proceed": "続行",
+        "NewSecretSaved": "新しいGoogle認証秘密鍵が保存されました。",
         "Title": "タイトル",
+        "TitleDescription": "Google 認証システムアプリに表示されるタイトル。",
         "Description": "説明",
+        "DescriptionDescription": "Google 認証システムアプリに表示される説明。",
         "Change": "変更",
         "Disable": "無効",
-        "AuthCodeInvalid": "認証コードが無効です。"
+        "Disabled": "このアカウントのGoogle認証サポートが無効にされました",
+        "AuthCodeRequired": "Google 認証アプリから認証コードを入力してください。",
+        "AuthCodeInvalid": "認証コードが無効です。",
+        "LoginPluginDisabled": "Piwik ログインのプラグインは、Google 認証システムと競合するため、自動で無効にされています。既定のログイン ( Google 認証システムなし ) に切り替えるには、Google 認証システム プラグインを無効にしてください。"
     }
 }
