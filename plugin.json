@@ -1,13 +1,13 @@
 {
   "name": "GoogleAuthenticator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Adds Google Authenticator Two Factor Auth to Piwik",
   "theme": false,
   "keywords": ["login", "authentication", "2FA", "google", "authenticator"],
   "license": "BSD & GPL v3+",
   "homepage": "https://github.com/sgiehl/piwik-plugin-GoogleAuthenticator",
   "require": {
-    "piwik": ">=2.14.0",
+    "piwik": ">=2.14.0,<3.0.0-b1",
     "php": ">=5.4.0"
   },
   "authors": [
