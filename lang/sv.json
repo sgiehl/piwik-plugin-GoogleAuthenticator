@@ -4,12 +4,26 @@
         "Settings": "Google Authenticator-inställningar",
         "DisabledInfo": "Google Authenticator är för närvarande avaktiverat. Klicka här nedanför för att aktivera Google Authenticator till ditt konto.",
         "Secret": "Hemlig",
+        "SecretDescription": "Google Authenticator Secret",
+        "SecretGenerated": "En ny token har genererats. Vänligen skanna QR-koden på nytt eller uppdatera token i Google Authenticator appen.",
         "Activate": "Aktivera Google Authenticator",
+        "SetUp": "Konfigurera Google Authenticator",
         "GenerateNewSecret": "Skapa ny hemlighet",
+        "ToggleQRCode": "Visa\/Dölj QR-kod",
+        "QRCodeDescription": "Skanna denna QR-kod med Google Authenticator appen på din mobil.",
+        "AuthCode": "Autentiseringskod",
+        "AuthCodeNewDescription": "Vänligen skriv in autentiseringskoden efter att du har uppdaterat din Google Authenticator app med en ny token.",
         "Proceed": "Fortsätt",
+        "NewSecretSaved": "Ditt nya Google Authenticator token har sparats.",
         "Title": "Titel",
+        "TitleDescription": "Titel som visas i din Google Authenticator app.",
         "Description": "Beskrivning",
+        "DescriptionDescription": "Beskrivning som visas i din Google Authenticator app.",
         "Change": "Ändra",
-        "Disable": "Inaktivera"
+        "Disable": "Inaktivera",
+        "Disabled": "Google Authenticator support för detta kontot har inaktiverats.",
+        "AuthCodeRequired": "Vänligen skriv in autentiseringskoden från din Google Authenticator app.",
+        "AuthCodeInvalid": "Autentiseringskoden är inte giltig",
+        "LoginPluginDisabled": "Piwiks inloggningstillägg har inaktiverats automatiskt på grund av en konflikt med Google Authenticator. För att aktivera standardinloggningen (utan Google Authenticator) vänligen inaktivera Google Authenticator tillägget."
     }
 }

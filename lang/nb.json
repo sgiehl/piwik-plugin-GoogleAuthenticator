@@ -2,17 +2,28 @@
     "GoogleAuthenticator": {
         "Menu": "Google Authenticator",
         "Settings": "Google Authenticator-innstillinger",
+        "DisabledInfo": "Google Authenticator er nå deaktivert. Vennligst klikk nedenfor for å aktivere Google Authenticator for din konto.",
         "Secret": "Hemmelighet",
-        "SecretDescription": "Google Authenticator hemmelighet",
+        "SecretDescription": "Google Authenticator-hemmelighet",
+        "SecretGenerated": "En ny hemmelighet har blitt generert. Vennligst skann QR-koden igjen eller oppdater hemmeligheten i Google Authenticator-appen.",
         "Activate": "Aktiver Google Authenticator",
         "SetUp": "Sett opp Google Authenticator",
+        "GenerateNewSecret": "Generer ny hemmelighet",
         "ToggleQRCode": "Vis\/skjul QR-kode",
         "QRCodeDescription": "Skann denne QR-koden med Google Authenticator-appen på din mobiltelefon.",
+        "AuthCode": "Auth-kode",
+        "AuthCodeNewDescription": "Vennligst skriv inn auth-koden, etter at du har oppdatert Google Authenticator-appen med den nye hemmeligheten.",
         "Proceed": "Fortsett",
+        "NewSecretSaved": "Din nye Google Authenticator-hemmelighet har blitt lagret.",
         "Title": "Tittel",
+        "TitleDescription": "Tittel som skal vises i din Google Authenticator-app.",
         "Description": "Beskrivelse",
+        "DescriptionDescription": "Beskrivelse som skal vises i din Google Authenticator-app.",
         "Change": "Endre",
         "Disable": "Deaktiver",
-        "Disabled": "Google Authenticator-støtte for denne kontoen har blitt deaktivert"
+        "Disabled": "Google Authenticator-støtte for denne kontoen har blitt deaktivert",
+        "AuthCodeRequired": "Vennligst skriv inn auth-koden fra din Google Authenticator-app.",
+        "AuthCodeInvalid": "Auth-kode er ikke gyldig",
+        "LoginPluginDisabled": "Piwik Login-utvidelsen har blitt deaktivert automatisk, siden den kommer i konflikt med Google Authenticator. For å bytte tilbake til standardinnlogging (uten Google Authenticator), vennligst deaktiver Google Authenticator-utvidelsen."
     }
 }

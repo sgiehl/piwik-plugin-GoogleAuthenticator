@@ -1,5 +1,9 @@
 {
     "GoogleAuthenticator": {
+        "Menu": "Mirëfilltësues Google",
+        "Secret": "E fshehtë",
+        "GenerateNewSecret": "Prodhoni të fshehtë të re",
+        "ToggleQRCode": "Shfaqni\/Fshihni Kod QR",
         "Title": "Titull"
     }
 }
