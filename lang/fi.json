@@ -1,0 +1,29 @@
+{
+    "GoogleAuthenticator": {
+        "Menu": "Google Authenticator",
+        "Settings": "Google Authenticator -asetukset",
+        "DisabledInfo": "Google Authenticator on pois käytöstä. Ota käyttöön klikkaamalla alle.",
+        "Secret": "Salaisuus",
+        "SecretDescription": "Google Authenticatorin salaisuus",
+        "SecretGenerated": "Uusi salaisuus on luotu. Skannaa QR-koodi tai päivitä salaisuus Google Authenticator -ohjelmaan.",
+        "Activate": "Ota Google Authenticator käyttöön",
+        "SetUp": "Ota Google Authenticator käyttöön",
+        "GenerateNewSecret": "Luo uusi salaisuus",
+        "ToggleQRCode": "Näytä\/piilota QR-koodi",
+        "QRCodeDescription": "Skannaa tämä QR-koodi Google Authenticator -ohjelmalla kännykässäsi.",
+        "AuthCode": "Autentikointikoodi",
+        "AuthCodeNewDescription": "Päivitä Google Authenticator -ohjelmaan uusi koodi ja kirjoita autentikaatiokoodi.",
+        "Proceed": "Jatka",
+        "NewSecretSaved": "Uusi Google Authenticator -salaisuutesi on tallennettu.",
+        "Title": "Otsikko",
+        "TitleDescription": "Otsikko Google Authenticator -ohjelmaan.",
+        "Description": "Kuvaus",
+        "DescriptionDescription": "Kuvaus joka näytetään Google Authenticator -ohjelmassasi.",
+        "Change": "Vaihda",
+        "Disable": "Poista käytöstä",
+        "Disabled": "Tämän tilin Google Authenticator -tuki on poistettu käytöstä",
+        "AuthCodeRequired": "Kirjoita autentikointikoodi Google Authenticator -ohjelmastasi.",
+        "AuthCodeInvalid": "Väärä koodi",
+        "LoginPluginDisabled": "Piwik Login -lisäosa on poistettu käytöstä automaattisesti. Jos haluat vaihtaa takaisin normaaliin kirjautumiseen (ilman Google Authenticatoria), poista Google Authenticator -lisäosa pois käytöstä."
+    }
+}
