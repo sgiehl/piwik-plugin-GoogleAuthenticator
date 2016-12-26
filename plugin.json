@@ -1,6 +1,6 @@
 {
   "name": "GoogleAuthenticator",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Adds Google Authenticator Two Factor Auth to Piwik",
   "theme": false,
   "keywords": ["login", "authentication", "2FA", "google", "authenticator"],

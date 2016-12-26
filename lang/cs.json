@@ -2,7 +2,7 @@
     "GoogleAuthenticator": {
         "Menu": "Google Authenticator",
         "Settings": "Nastavení Google Authenticator",
-        "DisabledInfo": "Váš účet",
+        "DisabledInfo": "Google Authenticator je momentálně vypnutý. Klikněte prosím níže pro zapnutí Google Authenticator pro svůj účet.",
         "Secret": "Tajemství",
         "SecretDescription": "Tajemství Google Authenticator",
         "SecretGenerated": "Bylo vygenerováno nové tajemství. Znovu naskenujte QR kód, nebo ho aktualizujte v Google Authenticatoru.",

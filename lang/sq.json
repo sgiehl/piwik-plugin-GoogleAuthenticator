@@ -1,9 +1,29 @@
 {
     "GoogleAuthenticator": {
         "Menu": "Mirëfilltësues Google",
+        "Settings": "Rregullime Mirëfilltësuesi Google",
+        "DisabledInfo": "Mirëfilltësuesi Google hëpërhë është i çaktivizuar. Ju lutemi, klikoni më poshtë që të aktivizohet Mirëfilltësuesi Google për llogarinë tuaj.",
         "Secret": "E fshehtë",
+        "SecretDescription": "E fshehtë Mirëfilltësuesi Google",
+        "SecretGenerated": "U prodhua një e fshehtë e re. Ju lutemi, riskanoni kodin QR ose përditësojeni të fshehtën te Aplikacioni Mirëfilltësues Google.",
+        "Activate": "Aktivizo Mirëfilltësuesin Google",
+        "SetUp": "Rregulloni Mirëfilltësuesin Google",
         "GenerateNewSecret": "Prodhoni të fshehtë të re",
         "ToggleQRCode": "Shfaqni\/Fshihni Kod QR",
-        "Title": "Titull"
+        "QRCodeDescription": "Skanojeni këtë kod QR me Aplikacionin Mirëfilltësues Google te celulari juaj.",
+        "AuthCode": "Kod mirëfilltësimi",
+        "AuthCodeNewDescription": "Ju lutemi, shtypni kodin e mirëfilltësimit, pasi të përditësoni aplikacionin tuaj Mirëfilltësues Google me të fshehtën e re.",
+        "Proceed": "Kryeje",
+        "NewSecretSaved": "E fshehta juaj e re për Mirëfilltësuesin Google u ruajt.",
+        "Title": "Titull",
+        "TitleDescription": "Titull që të shfaqet te aplikacioni juaj Mirëfilltësues Google.",
+        "Description": "Përshkrim",
+        "DescriptionDescription": "Përshkrim për shfaqje te aplikacioni juaj Mirëfilltësues Google.",
+        "Change": "Ndryshoje",
+        "Disable": "Çaktivizoje",
+        "Disabled": "Mbulimi i Mirëfilltësuesit Google për këtë llogari është çaktivizuar",
+        "AuthCodeRequired": "Ju lutemi, shtypni kodin e mirëfilltësimit prej aplikacionit tuaj Mirëfilltësues Google.",
+        "AuthCodeInvalid": "Kod Mirëfilltësimi i pavlefshëm",
+        "LoginPluginDisabled": "Shtojca Piwik e Hyrjeve është çaktivizuar vetvetiu, pasi përplaset me Mirëfilltësuesin Google. Që të mund të ktheni Hyrjen parazgjedhje (pa Mirëfilltësues Google), ju lutemi, çaktivizoni shtojcën Mirëfilltësues Google."
     }
 }

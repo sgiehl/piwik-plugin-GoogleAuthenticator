@@ -7,6 +7,8 @@
         "SecretDescription": "Secret d'authentification Google",
         "SecretGenerated": "Un nouveau secret a été généré. Veuillez scanner à nouveau le QR-Code ou mettre à jour le secret dans l'application Authentification Google.",
         "Activate": "Activer l'authentification Google",
+        "ActivityActivated": "a activé l'authentification sécurisée via Authentification Google",
+        "ActivityDisabled": "a désactivé l'authentification sécurisée dans l'Authentification Google",
         "SetUp": "Mettre en place l'authentification Google",
         "GenerateNewSecret": "Générer un nouveau secret",
         "ToggleQRCode": "Afficher\/Masquer le code QR",

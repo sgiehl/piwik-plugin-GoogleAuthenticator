@@ -7,6 +7,8 @@
         "SecretDescription": "Συνθηματικό Google Authenticator",
         "SecretGenerated": "Δημιουργήθηκε ένα νέο συνθηματικό. Παρακαλούμε σαρώστε ξανά τον κωδικό QR ή ενημερώστε το συνθηματικό στην εφαρμογή Google Authenticator.",
         "Activate": "Ενεργοποίηση του Google Authenticator",
+        "ActivityActivated": "έχει ενεργοποιήσει ασφαλή είσοδο με χρήση του Google Authenticator",
+        "ActivityDisabled": "έχει απενεργοποιήσει την ασφαλή είσοδο με χρήση του Google Authenticator",
         "SetUp": "Ρύθμιση του Google Authenticator",
         "GenerateNewSecret": "Δημιουργία νέου συνθηματικού",
         "ToggleQRCode": "Εμφάνιση\/απόκρυψη του κωδικού QR",

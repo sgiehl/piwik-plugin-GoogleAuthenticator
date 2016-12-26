@@ -17,6 +17,8 @@
              inline-help="{{ 'GoogleAuthenticator_SecretDescription'|translate|e('html_attr') }}">
         </div>
 
+        <input type="hidden" name="gasecret" value="{{ newSecret }}" />
+
         <div piwik-field uicontrol="text" name="gatitle"
              title="{{ 'GoogleAuthenticator_Title'|translate|e('html_attr') }}"
              value="{{ gatitle }}"

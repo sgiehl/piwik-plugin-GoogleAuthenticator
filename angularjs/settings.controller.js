@@ -25,7 +25,6 @@ angular.module('piwikApp').controller('GoogleAuthenticatorSettings', function ($
     });
 
     $timeout(function() {
-        console.log('timeout');
         $scope.showQRCode()
     }, 250);
 });
