@@ -9,83 +9,90 @@
 
     <div id="notificationContainer">
     </div>
+    <nav class="blue-grey darken-3">
+        <div class="nav-wrapper">
+            <span id="logo" class="brand-logo center">
 
-    <div id="logo">
-        {% if isCustomLogo == false %}
-        <a href="http://piwik.org" title="{{ linkTitle }}">
-            {% endif %}
-            {% if hasSVGLogo %}
-        <img src='{{ logoSVG }}' title="{{ linkTitle }}" alt="Piwik" class="ie-hide"/>
-            <!--[if lt IE 9]>
-            {% endif %}
-            <img src='{{ logoLarge }}' title="{{ linkTitle }}" alt="Piwik"/>
-            {% if hasSVGLogo %}<![endif]-->{% endif %}
+                {% if isCustomLogo == false %}
+                <a href="http://piwik.org" title="{{ linkTitle }}">
+                {% endif %}
+                    {% if hasSVGLogo %}
+                        <img src='{{ logoSVG }}' class="{% if not isCustomLogo %}default-piwik-logo{% endif %}"
+                             title="{{ linkTitle }}" alt="Piwik"/>
+                {% else %}
+                        <img src='{{ logoLarge }}' title="{{ linkTitle }}" alt="Piwik"/>
+                    {% endif %}
 
-            {% if isCustomLogo %}
-                {% set poweredByPiwik %}
-                    <i><a href="http://piwik.org/" rel="noreferrer" target="_blank">{{ linkTitle }}</a></i>
-                {% endset %}
-            {% endif %}
+                    {% if isCustomLogo == false %}
+                    </a>
+                {% endif %}
 
-            {% if isCustomLogo == false %}
-        </a>
-
-        <div class="description">
-            <a href="http://piwik.org" title="{{ linkTitle }}">{{ linkTitle }}</a>
-
-            <div class="arrow"></div>
+            </span>
         </div>
-        {% endif %}
-    </div>
+    </nav>
 
-    <section class="loginSection">
+    <section class="loginSection row">
+        <div class="col s12 m6 push-m3 l4 push-l4">
+            {# untrusted host warning #}
+            {% if (isValidHost is defined and invalidHostMessage is defined and isValidHost == false) %}
+                {% include '@CoreHome/_warningInvalidHost.twig' %}
+            {% else %}
+                <div class="contentForm loginForm">
+                    {% embed 'contentBlock.twig' with {'title': 'Login_LogIn'|translate} %}
+                        {% block content %}
+                            <div class="message_container">
 
-        {# untrusted host warning #}
-        {% if (isValidHost is defined and invalidHostMessage is defined and isValidHost == false) %}
-            {% include '@CoreHome/_warningInvalidHost.twig' %}
-        {% else %}
-            <div id="message_container">
+                                {{ include('@Login/_formErrors.twig', {formErrors: form_data.errors } ) }}
 
-                {{ include('@Login/_formErrors.twig', {formErrors: form_data.errors } ) }}
+                                {% if AccessErrorString %}
+                                    <div piwik-notification
+                                         noclear="true"
+                                         context="error">
+                                        <strong>{{ 'General_Error'|translate }}</strong>: {{ AccessErrorString|raw }}
+                                        <br/>
+                                    </div>
+                                {% endif %}
 
-                {% if AccessErrorString %}
-                    <div class="message_error">
-                        <strong>{{ 'General_Error'|translate }}</strong>: {{ AccessErrorString|raw }}<br/>
-                    </div>
-                {% endif %}
+                                {% if infoMessage %}
+                                    <p class="message">{{ infoMessage|raw }}</p>
+                                {% endif %}
+                            </div>
+                            <form {{ form_data.attributes|raw }} ng-non-bindable>
+                                <h1>{{ formTitle }}</h1>
+                                <fieldset class="inputs">
+                                    <input type="text" name="form_login" id="login_form_login" class="input"
+                                           value="{{ login }}"
+                                           size="20" readonly/>
+                                    <input type="text" name="form_authcode" id="login_form_authcode" class="input"
+                                           value=""
+                                           size="20" autocomplete="off" tabindex="1" autofocus
+                                           placeholder="{{ 'GoogleAuthenticator_AuthCode'|translate }}"/>
+                                    <input type="hidden" name="form_nonce" id="authcode_nonce" value="{{ nonce }}"/>
+                                    <input type="hidden" name="form_rememberme" id="login_form_rememberme"
+                                           value="{{ rememberMe }}"/>
+                                </fieldset>
 
-                {% if infoMessage %}
-                    <p class="message">{{ infoMessage|raw }}</p>
-                {% endif %}
-            </div>
-            <form {{ form_data.attributes|raw }} ng-non-bindable>
-                <h1>{{ formTitle }}</h1>
-                <fieldset class="inputs">
-                    <input type="text" name="form_login" id="login_form_login" class="input" value="{{ login }}"
-                           size="20" readonly/>
-                    <input type="text" name="form_authcode" id="login_form_authcode" class="input" value=""
-                           size="20" autocomplete="off" tabindex="1" autofocus
-                           placeholder="{{ 'GoogleAuthenticator_AuthCode'|translate }}"/>
-                    <input type="hidden" name="form_nonce" id="authcode_nonce" value="{{ nonce }}"/>
-                    <input type="hidden" name="form_rememberme" id="login_form_rememberme" value="{{ rememberMe }}"/>
-                </fieldset>
+                                <fieldset class="actions">
+                                    <a href="{{ logouturl }}">{{ 'General_Cancel'|translate }}</a>
+                                    <input class="submit btn" id='login_form_submit' type="submit"
+                                           value="{{ 'Login_LogIn'|translate }}"
+                                           tabindex="2"/>
+                                </fieldset>
+                            </form>
 
-                <fieldset class="actions">
-                    <a href="{{ logouturl }}">{{ 'General_Cancel'|translate }}</a>
-                    <input class="submit" id='login_form_submit' type="submit" value="{{ 'Login_LogIn'|translate }}"
-                           tabindex="2"/>
-                </fieldset>
-            </form>
-
-            {% if poweredByPiwik is defined %}
-                <p id="piwik">
-                    {{ poweredByPiwik }}
-                </p>
+                            {% if poweredByPiwik is defined %}
+                                <p id="piwik">
+                                    {{ poweredByPiwik }}
+                                </p>
+                            {% endif %}
+                            <div id="lost_password_instructions" style="display:none;">
+                                <p class="message">{{ 'Login_ResetPasswordInstructions'|translate }}</p>
+                            </div>
+                        {% endblock %}
+                    {% endembed %}
+                </div>
             {% endif %}
-            <div id="lost_password_instructions" style="display:none;">
-                <p class="message">{{ 'Login_ResetPasswordInstructions'|translate }}</p>
-            </div>
-        {% endif %}
+        </div>
     </section>
 
 {% endblock %}

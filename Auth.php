@@ -10,7 +10,6 @@ namespace Piwik\Plugins\GoogleAuthenticator;
 
 use \Exception;
 use Piwik\AuthResult;
-use Piwik\Session;
 use Piwik\Session\SessionNamespace;
 
 /**

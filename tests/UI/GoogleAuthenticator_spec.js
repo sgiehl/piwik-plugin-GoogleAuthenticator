@@ -20,8 +20,8 @@ describe("GoogleAuthenticator", function () {
         expect.screenshot('setup').to.be.captureSelector('#content', function (page) {
             page.click("#content .btn-lg");
             page.evaluate(function(){
-                $('#gasecret').attr('value', '3UH6WHFP3DWZNYQBGSCO7GU5CRGR74U7');
-                $('#qrcode').css({visibility: 'hidden'});
+                $('#gasecret').val('3UH6WHFP3DWZNYQBGSCO7GU5CRGR74U7');
+                $('.qrcode').css({visibility: 'hidden'});
             });
         }, done);
     });

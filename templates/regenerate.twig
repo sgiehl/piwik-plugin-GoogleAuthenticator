@@ -1,47 +1,51 @@
-{% extends 'user.twig' %}
-{% block content %}
+{% extends 'admin.twig' %}
 
-    <form method="post" action="{{ {"disable": null, "activate": null} | urlRewriteWithParameters }}">
-        <h2 piwik-enriched-headline>{{ 'GoogleAuthenticator_Settings'|translate }}</h2>
+{% set title %}{{ 'GoogleAuthenticator_Settings'|translate }}{% endset %}
+
+{% block content %}
+    <div piwik-content-block content-title="{{ title|e('html_attr') }}">
+
+    <form ng-controller="GoogleAuthenticatorSettings" method="post" action="{{ {"disable": null, "activate": null} | urlRewriteWithParameters }}">
 
         <div class="alert alert-info">{{ 'GoogleAuthenticator_SecretGenerated'|translate }}</div>
 
-        <div class="form-group">
-            <label for="secret">{{ 'GoogleAuthenticator_Secret'|translate }}</label>
-
-            <div class="form-help">{{ 'GoogleAuthenticator_SecretDescription'|translate }}</div>
-            <input type="text" disabled value="{{ newSecret }}" id="gasecret"/>
-            <input type="hidden" value="{{ newSecret }}" name="gasecret"/>
+        <div piwik-field uicontrol="text" name="gasecret"
+             title="{{ 'GoogleAuthenticator_Secret'|translate|e('html_attr') }}"
+             disabled="true"
+             ng-model="gasecret"
+             value="{{ newSecret }}"
+             inline-help="{{ 'GoogleAuthenticator_SecretDescription'|translate|e('html_attr') }}">
         </div>
 
-        <div class="form-group">
-            <label for="title">{{ 'GoogleAuthenticator_Title'|translate }}</label>
-
-            <div class="form-help">{{ 'GoogleAuthenticator_TitleDescription'|translate }} <a href="javascript:;" id="changeTitle">{{ 'GoogleAuthenticator_Change'|translate }}</a></div>
-            <input type="text" readonly value="{{ title }}" id="gatitle" name="gatitle" />
+        <div piwik-field uicontrol="text" name="gatitle"
+             title="{{ 'GoogleAuthenticator_Title'|translate|e('html_attr') }}"
+             value="{{ gatitle }}"
+             ng-model="gatitle"
+             inline-help="{{ 'GoogleAuthenticator_TitleDescription'|translate|e('html_attr') }}">
         </div>
 
-        <div class="form-group">
-            <label for="description">{{ 'GoogleAuthenticator_Description'|translate }}</label>
-
-            <div class="form-help">{{ 'GoogleAuthenticator_DescriptionDescription'|translate }} <a href="javascript:;" id="changeDescription">{{ 'GoogleAuthenticator_Change'|translate }}</a></div>
-            <input type="text" readonly value="{{ description }}" id="gadescription" name="gadescription" />
+        <div piwik-field uicontrol="text" name="description"
+             title="{{ 'GoogleAuthenticator_Description'|translate|e('html_attr') }}"
+             value="{{ description }}"
+             ng-model="description"
+             inline-help="{{ 'GoogleAuthenticator_DescriptionDescription'|translate|e('html_attr') }}">
         </div>
 
-        <div class="form-group">
-            <label for="qrcode">{{ 'GoogleAuthenticator_QRCodeDescription'|translate }}</label>
-            <img id="qrcode" src="{{ googleAuthImage }}"/>
+        <div piwik-field uicontrol="text"
+             disabled="true"
+             title="{{ 'GoogleAuthenticator_QRCodeDescription'|translate|e('html_attr') }}"
+             inline-help="{{ '<img class="qrcode"/>'|e('html_attr') }}">
         </div>
 
-        <div class="form-group">
-            <label for="authcode">{{ 'GoogleAuthenticator_AuthCode'|translate }}</label>
-
-            <div class="form-help">{{ 'GoogleAuthenticator_AuthCodeNewDescription'|translate }}</div>
-            <input type="text" value="" name="gaauthcode" id="gaauthcode"/>
+        <div piwik-field uicontrol="text" name="gaauthcode"
+             title="{{ 'GoogleAuthenticator_AuthCode'|translate|e('html_attr') }}"
+             value=""
+             inline-help="{{ 'GoogleAuthenticator_AuthCodeNewDescription'|translate|e('html_attr') }}">
         </div>
 
-        <input type="hidden" name="authCodeNonce" value="{{ authCodeNonce }}">
+        <input type="hidden" name="authCodeNonce" ng-model="ajaxForm.data.authCodeNonce" value="{{ authCodeNonce }}">
 
-        <button type="submit">{{ 'GoogleAuthenticator_Proceed'|translate }}</button>
+        <input type="submit" class="btn" value="{{ 'GoogleAuthenticator_Proceed'|translate }}" />
     </form>
+    </div>
 {% endblock %}

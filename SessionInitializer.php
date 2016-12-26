@@ -41,15 +41,12 @@ class SessionInitializer extends \Piwik\Plugins\Login\SessionInitializer
                 throw new AuthCodeRequiredException();
             }
 
+            Piwik::postEvent('Login.authenticate.failed', array($auth->getLogin()));
+
             $this->processFailedSession($rememberMe);
         } else {
             $this->processSuccessfulSession($authResult, $rememberMe);
         }
-
-        /**
-         * @deprecated Create a custom SessionInitializer instead.
-         */
-        Piwik::postEvent('Login.initSession.end');
     }
 
     /**
@@ -63,21 +60,10 @@ class SessionInitializer extends \Piwik\Plugins\Login\SessionInitializer
     {
         $storage = new Storage($authResult->getIdentity());
 
-        /**
-         * @deprecated Create a custom SessionInitializer instead.
-         */
-        Piwik::postEvent(
-            'Login.authenticate.successful',
-            array(
-                $authResult->getIdentity(),
-                $authResult->getTokenAuth()
-            )
-        );
-
         $cookie = $this->getAuthCookie($rememberMe);
         $cookie->set('login', $authResult->getIdentity());
         $cookie->set('token_auth', $this->getHashTokenAuth($authResult->getIdentity(), $authResult->getTokenAuth()));
-        if ($storage->isActive()) {
+        if ($storage->isActive() && $authResult->wasAuthenticationSuccessful()) {
             $cookie->set('auth_code', $this->getHashTokenAuth($authResult->getIdentity(), $storage->getSecret()));
         }
         $cookie->setSecure(ProxyHttp::isHttps());

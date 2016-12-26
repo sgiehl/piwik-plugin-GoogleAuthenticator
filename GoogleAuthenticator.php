@@ -51,16 +51,10 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
         echo $frontController->dispatch('GoogleAuthenticator', 'login', array($exception->getMessage()));
     }
 
-    public function getStylesheetFiles(&$stylesheetFiles)
-    {
-        parent::getStylesheetFiles($stylesheetFiles);
-        $stylesheetFiles[] = "plugins/GoogleAuthenticator/stylesheets/styles.less";
-    }
-
     public function getJsFiles(&$javascriptFiles)
     {
         parent::getJsFiles($javascriptFiles);
-        $javascriptFiles[] = "plugins/GoogleAuthenticator/javascripts/settings.js";
+        $javascriptFiles[] = "plugins/GoogleAuthenticator/angularjs/settings.controller.js";
     }
 
     public function postLoad()
@@ -69,7 +63,7 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
     }
 
     /**
-     * @param $auth
+     * @param Auth $auth
      */
     public static function initAuthenticationFromCookie(\Piwik\Auth $auth, $activateCookieAuth)
     {

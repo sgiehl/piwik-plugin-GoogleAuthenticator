@@ -25,9 +25,9 @@ class Controller extends \Piwik\Plugins\Login\Controller
     /**
      * @var Auth
      */
-    private $auth;
+    protected $auth;
 
-    private $passwordResetter;
+    protected $passwordResetter;
 
     /**
      * Constructor.
@@ -240,7 +240,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
      *
      * @param View $view
      */
-    private function configureView($view)
+    protected function configureView($view)
     {
         $this->setBasicVariablesView($view);
 
@@ -312,7 +312,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $secret = Common::getRequestVar('gasecret', '', 'string');
         $authCode = Common::getRequestVar('gaauthcode', '', 'string');
         $authCodeNonce = Common::getRequestVar('authCodeNonce', '', 'string');
-        $title = Common::getRequestVar('gatitle', $storage->getTitle(), 'string');
+        $gatitle = Common::getRequestVar('gatitle', $storage->getTitle(), 'string');
         $description = Common::getRequestVar('gadescription', $storage->getDescription(), 'string');
 
         if (!empty($secret) && !empty($authCode) && Nonce::verifyNonce(self::AUTH_CODE_NONCE, $authCodeNonce) &&
@@ -320,7 +320,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
         ) {
             $storage->setSecret($secret);
             $storage->setDescription($description);
-            $storage->setTitle($title);
+            $storage->setTitle($gatitle);
             $this->auth->setAuthCode($authCode);
             $this->auth->validateAuthCode();
             Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified(array(
@@ -333,11 +333,11 @@ class Controller extends \Piwik\Plugins\Login\Controller
             $secret = $googleAuth->createSecret(32);
         }
 
-        $view->title = $title;
+        $view->gatitle = $gatitle;
         $view->description = $description;
         $view->authCodeNonce = Nonce::getNonce(self::AUTH_CODE_NONCE);
         $view->newSecret = $secret;
-        $view->googleAuthImage = $googleAuth->getQRCodeGoogleUrl($description, $secret, $title);
+        $view->googleAuthImage = $googleAuth->getQRCodeGoogleUrl($description, $secret, $gatitle);
 
         return $view->render();
     }

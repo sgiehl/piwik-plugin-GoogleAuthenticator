@@ -8,16 +8,12 @@
  */
 namespace Piwik\Plugins\GoogleAuthenticator;
 
-use Piwik\Menu\MenuUser;
-use Piwik\Piwik;
+use Piwik\Menu\MenuAdmin;
 
 class Menu extends \Piwik\Plugin\Menu
 {
-    public function configureUserMenu(MenuUser $menu)
+    public function configureAdminMenu(MenuAdmin $menu)
     {
-        if (!Piwik::isUserIsAnonymous()) {
-            $menu->addPersonalItem('GoogleAuthenticator_Menu', $this->urlForAction('settings'), $order = 9);
-        }
-
+        $menu->addPersonalItem('GoogleAuthenticator_Menu', $this->urlForAction('settings'), $order = 9);
     }
 }

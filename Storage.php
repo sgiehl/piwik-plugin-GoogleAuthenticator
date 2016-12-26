@@ -123,6 +123,7 @@ class Storage
      */
     public function activate()
     {
+        Piwik::postEvent('GoogleAuthenticator.Activated');
         $this->isActive = true;
         $this->save();
     }
@@ -132,6 +133,7 @@ class Storage
      */
     public function deactivate()
     {
+        Piwik::postEvent('GoogleAuthenticator.Disabled');
         $this->isActive = false;
         $this->save();
     }
