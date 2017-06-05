@@ -7,6 +7,8 @@
         "SecretDescription": "Google 認証システムの秘密鍵",
         "SecretGenerated": "新しい秘密鍵が生成されています。QR コードを再スキャンまたはGoogle 認証 App で秘密鍵を更新してください。",
         "Activate": "Google 認証システムをアクティブにします。",
+        "ActivityActivated": "Google 認証システムのセキュアログインを有効にしました",
+        "ActivityDisabled": "Google 認証システムのセキュアログインを無効にしました",
         "SetUp": "Google 認証システムを設定します。",
         "GenerateNewSecret": "新しい秘密鍵を生成",
         "ToggleQRCode": "QR コードの表示\/非表示",

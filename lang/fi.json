@@ -2,7 +2,7 @@
     "GoogleAuthenticator": {
         "Menu": "Google Authenticator",
         "Settings": "Google Authenticator -asetukset",
-        "DisabledInfo": "Google Authenticator on pois käytöstä. Ota käyttöön klikkaamalla alle.",
+        "DisabledInfo": "Google Authenticator on pois käytöstä. Ota käyttöön klikkaamalla alta.",
         "Secret": "Salaisuus",
         "SecretDescription": "Google Authenticatorin salaisuus",
         "SecretGenerated": "Uusi salaisuus on luotu. Skannaa QR-koodi tai päivitä salaisuus Google Authenticator -ohjelmaan.",

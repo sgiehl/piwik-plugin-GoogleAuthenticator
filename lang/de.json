@@ -7,6 +7,8 @@
         "SecretDescription": "Google Authenticator-Geheimschlüssel",
         "SecretGenerated": "Ein neuer Geheimschlüssel wurde generiert. Bitte scannen Sie den QR-Code erneut oder aktualisieren Sie den Geheimschlüssel in Ihrer Google Authenticator-App.",
         "Activate": "Google Authenticator aktivieren",
+        "ActivityActivated": "hat den sicheren Login mit Google Authenticator aktiviert",
+        "ActivityDisabled": "hat den sicheren Login mit Google Authenticator deaktiviert",
         "SetUp": "Google Authenticator einrichten",
         "GenerateNewSecret": "Neuen Geheimschlüssel generieren",
         "ToggleQRCode": "QR-Code ein-\/ausblenden",

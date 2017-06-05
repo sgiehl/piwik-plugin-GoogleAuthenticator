@@ -7,6 +7,8 @@
         "SecretDescription": "Tajemství Google Authenticator",
         "SecretGenerated": "Bylo vygenerováno nové tajemství. Znovu naskenujte QR kód, nebo ho aktualizujte v Google Authenticatoru.",
         "Activate": "Aktivovat Google Authenticator",
+        "ActivityActivated": "aktivoval bezpečné přihlášení pomocí Google authenticatoru",
+        "ActivityDisabled": "zakázal bezpečné přihlášení pomocí Google authhenticatoru",
         "SetUp": "Nastavit Google Authenticator",
         "GenerateNewSecret": "Vygenerovat nové tajemství",
         "ToggleQRCode": "Zobrazit\/skrýt QR kód",
