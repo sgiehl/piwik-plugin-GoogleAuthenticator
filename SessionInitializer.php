@@ -45,6 +45,8 @@ class SessionInitializer extends \Piwik\Plugins\Login\SessionInitializer
 
             $this->processFailedSession($rememberMe);
         } else {
+            Piwik::postEvent('Login.authenticate.successful', array($auth->getLogin()));
+
             $this->processSuccessfulSession($authResult, $rememberMe);
         }
     }
