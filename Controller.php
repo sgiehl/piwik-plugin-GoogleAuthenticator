@@ -8,6 +8,7 @@
  */
 namespace Piwik\Plugins\GoogleAuthenticator;
 
+use Endroid\QrCode\QrCode;
 use Piwik\Common;
 use Piwik\Auth as AuthInterface;
 use Piwik\Container\StaticContainer;
@@ -340,5 +341,15 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $view->googleAuthImage = $googleAuth->getQRCodeGoogleUrl($description, $secret, $gatitle);
 
         return $view->render();
+    }
+
+    public function showQrCode()
+    {
+        $data = Common::getRequestVar('data', '');
+
+        $qrCode = new QrCode(Common::unsanitizeInputValue($data));
+
+        header('Content-Type: '.$qrCode->getContentType());
+        echo $qrCode->get();
     }
 }

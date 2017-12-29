@@ -17,7 +17,7 @@ angular.module('piwikApp').controller('GoogleAuthenticatorSettings', function ($
             urlencoded += encodeURIComponent('&issuer=' + encodeURIComponent($scope.gatitle).replace(/%20/g,'+'));
         }
 
-        $('.qrcode').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=' + urlencoded);
+        $('.qrcode').attr('src', 'index.php?module=GoogleAuthenticator&action=showQrCode&data=' + urlencoded);
     };
 
     $scope.$watchGroup(['gatitle', 'description'], function(newValues, oldValues, scope) {
