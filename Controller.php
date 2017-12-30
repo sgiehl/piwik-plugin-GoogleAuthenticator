@@ -15,6 +15,7 @@ use Piwik\Container\StaticContainer;
 use Piwik\Nonce;
 use Piwik\Piwik;
 use Piwik\Plugins\Login\PasswordResetter;
+use Piwik\Session\SessionNamespace;
 use Piwik\Url;
 use Piwik\View;
 
@@ -262,10 +263,11 @@ class Controller extends \Piwik\Plugins\Login\Controller
     {
         Piwik::checkUserIsNotAnonymous();
 
+        $session = new SessionNamespace('GoogleAuthenticator');
+        $session->secret = null;
+
         $view = new View('@GoogleAuthenticator/settings');
         $this->setGeneralVariablesView($view);
-
-        $googleAuth = new PHPGangsta\GoogleAuthenticator();
 
         $storage = new Storage(Piwik::getCurrentUserLogin());
 
@@ -285,8 +287,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $view->showSetUp = Common::getRequestVar('setup', 0, 'int');
         $view->googleAuthIsActive = $storage->isActive();
         $view->googleAuthSecret = $secret;
-        $view->googleAuthImage = $googleAuth->getQRCodeGoogleUrl(Piwik::getCurrentUserLogin(), $secret,
-            'Piwik - ' . Url::getCurrentHost());
+        $view->googleAuthImage = $this->getQRUrl(Piwik::getCurrentUserLogin(), 'Piwik - ' . Url::getCurrentHost());
 
         return $view->render();
     }
@@ -308,9 +309,11 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $this->setGeneralVariablesView($view);
 
         $googleAuth = new PHPGangsta\GoogleAuthenticator();
+        $session = new SessionNamespace('GoogleAuthenticator');
+
+        $secret = $session->secret;
 
         $storage = new Storage(Piwik::getCurrentUserLogin());
-        $secret = Common::getRequestVar('gasecret', '', 'string');
         $authCode = Common::getRequestVar('gaauthcode', '', 'string');
         $authCodeNonce = Common::getRequestVar('authCodeNonce', '', 'string');
         $gatitle = Common::getRequestVar('gatitle', $storage->getTitle(), 'string');
@@ -331,25 +334,39 @@ class Controller extends \Piwik\Plugins\Login\Controller
         }
 
         if (empty($secret)) {
-            $secret = $googleAuth->createSecret(32);
+            $secret = $session->secret = $googleAuth->createSecret(32);
         }
+
+        $this->secret = $secret;
 
         $view->gatitle = $gatitle;
         $view->description = $description;
         $view->authCodeNonce = Nonce::getNonce(self::AUTH_CODE_NONCE);
         $view->newSecret = $secret;
-        $view->googleAuthImage = $googleAuth->getQRCodeGoogleUrl($description, $secret, $gatitle);
+        $view->googleAuthImage = $this->getQRUrl($description, $gatitle);
 
         return $view->render();
     }
 
     public function showQrCode()
     {
-        $data = Common::getRequestVar('data', '');
+        $session = new SessionNamespace('GoogleAuthenticator');
+        $title = Common::getRequestVar('title', '');
+        $descr = Common::getRequestVar('descr', '');
 
-        $qrCode = new QrCode(Common::unsanitizeInputValue($data));
+        $url = 'otpauth://totp/'.urlencode(Common::unsanitizeInputValue($descr)).'?secret='.$session->secret;
+        if(isset($title)) {
+            $url .= '&issuer='.urlencode(Common::unsanitizeInputValue($title));
+        }
+
+        $qrCode = new QrCode($url);
 
         header('Content-Type: '.$qrCode->getContentType());
         echo $qrCode->get();
+    }
+
+    protected function getQRUrl($description, $title)
+    {
+        return sprintf('index.php?module=GoogleAuthenticator&action=showQrCode&cb=%s&title=%s&descr=%s', Common::getRandomString(8), urlencode($title), urlencode($description));
     }
 }
