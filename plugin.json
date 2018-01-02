@@ -1,6 +1,6 @@
 {
   "name": "GoogleAuthenticator",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "Adds Google Authenticator Two Factor Auth to Piwik",
   "theme": false,
   "keywords": ["login", "authentication", "2FA", "google", "authenticator"],
@@ -19,7 +19,6 @@
   ],
   "donate": {
       "paypal": "stefangiehl@web.de",
-      "flattr": "https://flattr.com/thing/4453253/sgiehlpiwik-plugin-GoogleAuthenticator-on-GitHub",
-      "bitcoin": "1NxyWNfsjSNQULGxPVJUkgf8D3rpdJEgM6"
+      "flattr": "https://flattr.com/thing/4453253/sgiehlpiwik-plugin-GoogleAuthenticator-on-GitHub"
   }
 }
