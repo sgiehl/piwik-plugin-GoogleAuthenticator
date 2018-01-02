@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\GoogleAuthenticator\tests\Integration;
 
 use Piwik\AuthResult;
+use Piwik\Container\StaticContainer;
 use Piwik\DbHelper;
 use Piwik\Plugins\GoogleAuthenticator\Auth;
 use Piwik\Plugins\GoogleAuthenticator\PHPGangsta\GoogleAuthenticator;
@@ -47,6 +48,10 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->auth = new Auth();
 
         $ga = new GoogleAuthenticator();
+
+        // ensure auth object uses correct instance
+        StaticContainer::getContainer()->set('GoogleAuthenticator', $ga);
+
         $this->secret = $ga->createSecret(32);
     }
 

@@ -93,7 +93,7 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
         $secret = $storage->getSecret();
         $cookieSecret = $authCookie->get('auth_code');
         if ($cookieSecret == SessionInitializer::getHashTokenAuth($defaultLogin, $secret)) {
-            $googleAuth = new PHPGangsta\GoogleAuthenticator();
+            $googleAuth = StaticContainer::get('GoogleAuthenticator');
             $auth->setAuthCode($googleAuth->getCode($secret));
             $auth->validateAuthCode();
         }

@@ -190,7 +190,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $authCodeValidOrNotRequired = !$storage->isActive();
 
         if (!$authCodeValidOrNotRequired) {
-            $googleAuth = new PHPGangsta\GoogleAuthenticator();
+            $googleAuth = StaticContainer::get('GoogleAuthenticator');
             $form = $this->getAuthCodeForm();
 
             if ($form->getSubmitValue('form_authcode') && $form->validate()) {
@@ -287,7 +287,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $view->showSetUp = Common::getRequestVar('setup', 0, 'int');
         $view->googleAuthIsActive = $storage->isActive();
         $view->googleAuthSecret = $secret;
-        $view->googleAuthImage = $this->getQRUrl(Piwik::getCurrentUserLogin(), 'Piwik - ' . Url::getCurrentHost());
+        $view->googleAuthImage = $this->getQRUrl($storage->getDescription(), $storage->getTitle());
 
         return $view->render();
     }
@@ -308,16 +308,21 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $view = new View('@GoogleAuthenticator/regenerate');
         $this->setGeneralVariablesView($view);
 
-        $googleAuth = new PHPGangsta\GoogleAuthenticator();
+        $googleAuth = StaticContainer::get('GoogleAuthenticator');
         $session = new SessionNamespace('GoogleAuthenticator');
 
+        if (empty($session->secret)) {
+            $session->secret = $googleAuth->createSecret(32);
+        }
+
         $secret = $session->secret;
+        $session->setExpirationSeconds(180, 'secret');
 
         $storage = new Storage(Piwik::getCurrentUserLogin());
         $authCode = Common::getRequestVar('gaauthcode', '', 'string');
         $authCodeNonce = Common::getRequestVar('authCodeNonce', '', 'string');
         $gatitle = Common::getRequestVar('gatitle', $storage->getTitle(), 'string');
-        $description = Common::getRequestVar('gadescription', $storage->getDescription(), 'string');
+        $description = Common::getRequestVar('description', $storage->getDescription(), 'string');
 
         if (!empty($secret) && !empty($authCode) && Nonce::verifyNonce(self::AUTH_CODE_NONCE, $authCodeNonce) &&
             $googleAuth->verifyCode($secret, $authCode, 2)
@@ -331,10 +336,6 @@ class Controller extends \Piwik\Plugins\Login\Controller
                     'action' => 'settings',
                     'activate' => '1'
                 )));
-        }
-
-        if (empty($secret)) {
-            $secret = $session->secret = $googleAuth->createSecret(32);
         }
 
         $this->secret = $secret;

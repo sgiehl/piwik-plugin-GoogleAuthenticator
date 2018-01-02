@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAuthenticator;
 
 use \Exception;
 use Piwik\AuthResult;
+use Piwik\Container\StaticContainer;
 use Piwik\Session\SessionNamespace;
 
 /**
@@ -106,7 +107,7 @@ class Auth extends \Piwik\Plugins\Login\Auth
         $storage = new Storage($this->getLogin());
 
         $secret = $storage->getSecret();
-        $googleAuth = new PHPGangsta\GoogleAuthenticator();
+        $googleAuth = StaticContainer::get('GoogleAuthenticator');
         if (!empty($secret) && $googleAuth->verifyCode($secret, $this->authCode, 2)) {
             $this->setValidatedWithAuthCode(true);
             return true;
