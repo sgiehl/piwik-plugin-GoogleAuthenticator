@@ -365,11 +365,19 @@ class Controller extends \Piwik\Plugins\Login\Controller
 
     public function showQrCode()
     {
+        $storage = new Storage(Piwik::getCurrentUserLogin());
         $session = new SessionNamespace('GoogleAuthenticator');
+
+        $secret = $session->secret;
+
+        if (empty($secret)) {
+            $secret = $storage->getSecret();
+        }
+
         $title = Common::getRequestVar('title', '');
         $descr = Common::getRequestVar('descr', '');
 
-        $url = 'otpauth://totp/'.urlencode(Common::unsanitizeInputValue($descr)).'?secret='.$session->secret;
+        $url = 'otpauth://totp/'.urlencode(Common::unsanitizeInputValue($descr)).'?secret='.$secret;
         if(isset($title)) {
             $url .= '&issuer='.urlencode(Common::unsanitizeInputValue($title));
         }
