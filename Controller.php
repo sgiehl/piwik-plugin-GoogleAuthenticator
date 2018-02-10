@@ -16,6 +16,7 @@ use Piwik\Nonce;
 use Piwik\Piwik;
 use Piwik\Plugins\Login\PasswordResetter;
 use Piwik\Session\SessionNamespace;
+use Piwik\Plugins\UsersManager\Model AS UsersModel;
 use Piwik\Url;
 use Piwik\View;
 
@@ -152,7 +153,8 @@ class Controller extends \Piwik\Plugins\Login\Controller
         if ($form->validate()) {
             $nonce = $form->getSubmitValue('form_nonce');
             if (Nonce::verifyNonce('Login.login', $nonce)) {
-                $login = $form->getSubmitValue('form_login');
+                $loginOrEmail = $form->getSubmitValue('form_login');
+                $login = $this->getLoginFromLoginOrEmail($loginOrEmail);
                 $password = $form->getSubmitValue('form_password');
                 $rememberMe = $form->getSubmitValue('form_rememberme') == '1';
                 try {
@@ -177,6 +179,18 @@ class Controller extends \Piwik\Plugins\Login\Controller
         return $view->render();
     }
 
+    private function getLoginFromLoginOrEmail($loginOrEmail)
+    {
+        $model = new UsersModel();
+        if (!$model->userExists($loginOrEmail)) {
+            $user = $model->getUserByEmail($loginOrEmail);
+            if (!empty($user)) {
+                return $user['login'];
+            }
+        }
+
+        return $loginOrEmail;
+    }
 
     /**
      * Password reset confirmation action. Finishes the password reset process.
