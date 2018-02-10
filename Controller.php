@@ -301,7 +301,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $view->showSetUp = Common::getRequestVar('setup', 0, 'int');
         $view->googleAuthIsActive = $storage->isActive();
         $view->googleAuthSecret = $secret;
-        $view->googleAuthImage = $this->getQRUrl($storage->getDescription(), $storage->getTitle());
+        $view->googleAuthImage = $this->getCurrentQRUrl();
 
         return $view->render();
     }
@@ -365,17 +365,19 @@ class Controller extends \Piwik\Plugins\Login\Controller
 
     public function showQrCode()
     {
-        $storage = new Storage(Piwik::getCurrentUserLogin());
-        $session = new SessionNamespace('GoogleAuthenticator');
+        $showCurrent = Common::getRequestVar('current', '');
 
-        $secret = $session->secret;
-
-        if (empty($secret)) {
+        if ($showCurrent) {
+            $storage = new Storage(Piwik::getCurrentUserLogin());
             $secret = $storage->getSecret();
+            $title = $storage->getTitle();
+            $descr = $storage->getDescription();
+        } else {
+            $session = new SessionNamespace('GoogleAuthenticator');
+            $secret = $session->secret;
+            $title = Common::getRequestVar('title', '');
+            $descr = Common::getRequestVar('descr', '');
         }
-
-        $title = Common::getRequestVar('title', '');
-        $descr = Common::getRequestVar('descr', '');
 
         $url = 'otpauth://totp/'.urlencode(Common::unsanitizeInputValue($descr)).'?secret='.$secret;
         if(isset($title)) {
@@ -391,5 +393,10 @@ class Controller extends \Piwik\Plugins\Login\Controller
     protected function getQRUrl($description, $title)
     {
         return sprintf('index.php?module=GoogleAuthenticator&action=showQrCode&cb=%s&title=%s&descr=%s', Common::getRandomString(8), urlencode($title), urlencode($description));
+    }
+
+    protected function getCurrentQRUrl()
+    {
+        return sprintf('index.php?module=GoogleAuthenticator&action=showQrCode&cb=%s&current=1', Common::getRandomString(8));
     }
 }

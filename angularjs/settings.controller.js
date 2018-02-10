@@ -11,7 +11,7 @@ angular.module('piwikApp').controller('GoogleAuthenticatorSettings', function ($
     $scope.description = '';
 
     $scope.showQRCode = function() {
-        $('.qrcode').attr('src', 'index.php?module=GoogleAuthenticator&action=showQrCode&cb='+piwik.cacheBuster+'title='+encodeURIComponent($scope.gatitle)+'&descr='+encodeURIComponent($scope.description));
+        $('.qrcode').attr('src', 'index.php?module=GoogleAuthenticator&action=showQrCode&cb='+piwik.cacheBuster+'&title='+encodeURIComponent($scope.gatitle)+'&descr='+encodeURIComponent($scope.description));
     };
 
     $scope.$watchGroup(['gatitle', 'description'], function(newValues, oldValues, scope) {
