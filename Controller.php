@@ -399,13 +399,4 @@ class Controller extends \Piwik\Plugins\Login\Controller
     {
         return sprintf('index.php?module=GoogleAuthenticator&action=showQrCode&cb=%s&current=1', Common::getRandomString(8));
     }
-
-    private function redirectToAuthCode()
-    {
-        $urlToRedirect = Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
-            'module' => 'GoogleAuthenticator',
-            'action' => 'authcode',
-        ]);
-        Url::redirectToUrl($urlToRedirect);
-    }
 }
