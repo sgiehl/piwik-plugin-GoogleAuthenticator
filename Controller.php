@@ -81,8 +81,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
         if ($form->getSubmitValue('form_authcode') && $form->validate()) {
             $nonce = $form->getSubmitValue('form_nonce');
             if (Nonce::verifyNonce('Login.login', $nonce)) {
-                $sac = $form->getSubmitValue('form_authcode');
-                $this->auth->setAuthCode($sac);
+                $this->auth->setAuthCode($form->getSubmitValue('form_authcode'));
                 if ($this->auth->validateAuthCode()) {
                     try {
                         $rememberMe = Common::getRequestVar('form_rememberme', '0', 'string') == '1';
