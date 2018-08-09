@@ -66,22 +66,5 @@ class SessionInitializer extends \Piwik\Session\SessionInitializer
         if ($storage->isActive() && $authResult->wasAuthenticationSuccessful()) {
             $_SESSION['auth_code'] = $this->getHashTokenAuth($authResult->getIdentity(), $storage->getSecret());
         }
-
-        $this->setValidatedWithAuthCode(true);
-    }
-
-    /**
-     * Sets whether the current session is validated with auth code
-     * @param bool|true $isValid
-     */
-    protected function setValidatedWithAuthCode($isValid = true)
-    {
-        $this->validatedWithAuthCode = $isValid;
-        try {
-            $session = new SessionNamespace('GoogleAuthenticator');
-            $session->validatedWithAuthCode = $isValid;
-        } catch (Exception $e) {
-            // ignore as that should only happen in tests
-        }
     }
 }
