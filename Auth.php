@@ -50,7 +50,7 @@ class Auth extends \Piwik\Plugins\Login\Auth
      * Returns if the current session is validated with auth code
      * @return bool
      */
-    public function getValidatedWithAuthCode()
+    protected function getValidatedWithAuthCode()
     {
         if (!is_null($this->validatedWithAuthCode)) {
             return $this->validatedWithAuthCode;
