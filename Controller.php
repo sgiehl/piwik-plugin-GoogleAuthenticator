@@ -127,7 +127,6 @@ class Controller extends \Piwik\Plugins\Login\Controller
         return $view->render();
     }
 
-
     /**
      * Pretty the same as in login action of Login plugin
      * - Adds the handling for required auth code for login
