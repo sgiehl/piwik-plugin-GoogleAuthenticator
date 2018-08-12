@@ -26,6 +26,6 @@
         "Disabled": "Google Authenticator ha sido deshabilitado para esta cuenta",
         "AuthCodeRequired": "Por favor escriba el código de autenticación de su aplicación Google Authenticator.",
         "AuthCodeInvalid": "Código de autorización no válido",
-        "LoginPluginDisabled": "El complemento de inicio de sesión Piwik ha sido deshabilitado automáticamente, en tanto genera un conflicto con Google Authenticator. Para volver al inicio de sesión predeterminado (sin Google Authenticator), deshabilite el complemento Google Authenticator."
+        "LoginPluginDisabled": "El complemento de inicio de sesión Matomo ha sido deshabilitado automáticamente, en tanto genera un conflicto con Google Authenticator. Para volver al inicio de sesión predeterminado (sin Google Authenticator), deshabilite el complemento Google Authenticator."
     }
 }

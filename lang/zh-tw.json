@@ -26,6 +26,6 @@
         "Disabled": "此帳號的 Google Authenticator 支援已停用",
         "AuthCodeRequired": "請填入 Google Authenticator 應用程式中的驗證碼。",
         "AuthCodeInvalid": "驗證碼無效",
-        "LoginPluginDisabled": "Piwik 登入已自動停用，因為它和 Google Authenticator 衝突。要切換回預設登入（不使用 Google Authenticator），請停用 Google Authenticator 外掛。"
+        "LoginPluginDisabled": "Matomo 登入已自動停用，因為它和 Google Authenticator 衝突。要切換回預設登入（不使用 Google Authenticator），請停用 Google Authenticator 外掛。"
     }
 }

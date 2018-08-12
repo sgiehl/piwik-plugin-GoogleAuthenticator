@@ -26,6 +26,6 @@
         "Disabled": "Il supporto di Google Authenticator per questo account è stato disabilitato",
         "AuthCodeRequired": "Digita l'auth code dalla tua app Google Authenticator.",
         "AuthCodeInvalid": "Aut Code non valido",
-        "LoginPluginDisabled": "Il plugin Piwik Login è stato disabilitato automaticamente perché in conflitto con Google Authenticator. Al fine di tornare all'autenticazione predefinita (senza Google Authenticator), si prega di disabilitare il plugin Google Authenticator."
+        "LoginPluginDisabled": "Il plugin Matomo Login è stato disabilitato automaticamente perché in conflitto con Google Authenticator. Al fine di tornare all'autenticazione predefinita (senza Google Authenticator), si prega di disabilitare il plugin Google Authenticator."
     }
 }

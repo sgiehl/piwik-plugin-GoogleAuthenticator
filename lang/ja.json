@@ -26,6 +26,6 @@
         "Disabled": "このアカウントのGoogle認証サポートが無効にされました",
         "AuthCodeRequired": "Google 認証アプリから認証コードを入力してください。",
         "AuthCodeInvalid": "認証コードが無効です。",
-        "LoginPluginDisabled": "Piwik ログインのプラグインは、Google 認証システムと競合するため、自動で無効にされています。既定のログイン ( Google 認証システムなし ) に切り替えるには、Google 認証システム プラグインを無効にしてください。"
+        "LoginPluginDisabled": "Matomo ログインのプラグインは、Google 認証システムと競合するため、自動で無効にされています。既定のログイン ( Google 認証システムなし ) に切り替えるには、Google 認証システム プラグインを無効にしてください。"
     }
 }

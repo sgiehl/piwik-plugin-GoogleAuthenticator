@@ -55,9 +55,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->secret = $ga->createSecret(32);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureNoLoginNoTokenAuth()
     {
         // no login; no token auth
@@ -65,9 +62,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureEmptyLoginNoTokenAuth()
     {
         // empty login; no token auth
@@ -76,9 +70,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureNonExistentUser()
     {
         // non-existent user
@@ -87,9 +78,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureAnonymousNotExisting()
     {
         // anonymous user doesn't exist yet
@@ -97,9 +85,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureAnonymousNotExistentEmptyLogin()
     {
         // empty login; anonymous user doesn't exist yet
@@ -108,9 +93,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureAnonymousNotExistentEmptyLoginWithTokenAuth()
     {
         // API authentication; anonymous user doesn't exist yet
@@ -118,9 +100,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureAnonymousNotExistentWithLoginAndTokenAuth()
     {
         // anonymous user doesn't exist yet
@@ -128,9 +107,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureAnonymousWithLogin()
     {
         DbHelper::createAnonymousUser();
@@ -140,9 +116,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureAnonymousEmptyLoginWithTokenAuth()
     {
         DbHelper::createAnonymousUser();
@@ -152,9 +125,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureAnonymousLoginTokenAuthMissmatch()
     {
         DbHelper::createAnonymousUser();
@@ -164,9 +134,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateSuccessAnonymousWithTokenAuth()
     {
         DbHelper::createAnonymousUser();
@@ -176,9 +143,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertUserLogin($rc, $login = 'anonymous', $tokenLength = 9);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateSuccessAnonymous()
     {
         DbHelper::createAnonymousUser();
@@ -188,9 +152,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertUserLogin($rc, $login = 'anonymous', $tokenLength = 9);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserEmptyTokenAuth()
     {
         $user = $this->_setUpUser();
@@ -200,9 +161,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserInvalidTokenAuth()
     {
         $user = $this->_setUpUser();
@@ -212,9 +170,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserInvalidTokenAuth2()
     {
         $user = $this->_setUpUser();
@@ -224,9 +179,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserEmptyLogin()
     {
         $user = $this->_setUpUser();
@@ -236,9 +188,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserWithSuperUserAccessEmptyLogin()
     {
         $user = $this->_setUpUser();
@@ -249,9 +198,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserLoginTokenAuthMissmatch()
     {
         $this->_setUpUser();
@@ -261,9 +207,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserLoginTokenAuthMissmatch2()
     {
         $user = $this->_setUpUser();
@@ -273,9 +216,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserLoginTokenAuthMissmatch3()
     {
         $user = $this->_setUpUser();
@@ -285,9 +225,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserWithSuperUserAccessLoginTokenAuthMissmatch()
     {
         $user = $this->_setUpUser();
@@ -298,9 +235,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserTokenAuthAuthCodeMissing()
     {
         $user = $this->_setUpUser();
@@ -311,9 +245,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLoginAuthCodeMissing($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateFailureUserTokenAuthAuthCodeInvalid()
     {
         $user = $this->_setUpUser();
@@ -324,9 +255,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertFailedLoginAuthCodeMissing($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateSuccessUserTokenAuth()
     {
         $user = $this->_setUpUser();
@@ -337,9 +265,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertUserLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateSuccessUserWithSuperUserAccessByTokenAuth()
     {
         $user = $this->_setUpUser();
@@ -350,9 +275,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertSuperUserLogin($rc, 'user');
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateSuccessUserWithSuperUserAccessByTokenAuthAndAuthCode()
     {
         $user = $this->_setUpUser();
@@ -364,9 +286,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertSuperUserLogin($rc, 'user');
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateSuccessUserLoginAndTokenAuth()
     {
         $user = $this->_setUpUser();
@@ -376,9 +295,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         $this->assertUserLogin($rc);
     }
 
-    /**
-     * @group Plugins
-     */
     public function testAuthenticateSuccessUserWithSuperUserAccessLoginAndTokenAuth()
     {
         $user = $this->_setUpUser();
@@ -387,19 +303,6 @@ class GoogleAuthenticatorTest extends IntegrationTestCase
         // valid login & token auth
         $rc = $this->authenticate($user['login'], $user['tokenAuth']);
         $this->assertSuperUserLogin($rc, 'user');
-    }
-
-    /**
-     * @group Plugins
-     */
-    public function testAuthenticateSuccessLoginAndHashedTokenAuth()
-    {
-        $user = $this->_setUpUser();
-        $hash = \Piwik\Plugins\Login\SessionInitializer::getHashTokenAuth($user['login'], $user['tokenAuth']);
-
-        // valid login & hashed token auth
-        $rc = $this->authenticate($user['login'], $tokenAuth = $hash);
-        $this->assertUserLogin($rc);
     }
 
     protected function _setUpUser()
