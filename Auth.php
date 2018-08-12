@@ -12,7 +12,6 @@ use \Exception;
 use Piwik\AuthResult;
 use Piwik\Container\StaticContainer;
 use Piwik\Session;
-use Piwik\Session\SessionAuth;
 use Piwik\Session\SessionNamespace;
 
 /**
@@ -111,7 +110,7 @@ class Auth extends \Piwik\Plugins\Login\Auth
     {
         Session::start();
 
-        $sessionAuth = StaticContainer::get(SessionAuth::class);
+        $sessionAuth = StaticContainer::get(\Piwik\Session\SessionAuth::class);
         $authResult = $sessionAuth->authenticate();
         if ($authResult->wasAuthenticationSuccessful()) {
             return $authResult;
