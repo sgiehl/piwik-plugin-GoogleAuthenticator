@@ -61,14 +61,6 @@ class GoogleAuthenticator extends \Piwik\Plugins\Login\Login
     }
 
     /**
-     * @param Auth $auth
-     */
-    public static function initAuthenticationFromCookie(\Piwik\Auth $auth, $activateCookieAuth)
-    {
-        // empty
-    }
-
-    /**
      * Deactivate default Login module, as both cannot be activated together
      *
      * TODO: shouldn't disable Login plugin but have to wait until Dependency Injection is added to core
