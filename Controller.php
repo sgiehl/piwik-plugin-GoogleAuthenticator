@@ -75,8 +75,6 @@ class Controller extends \Piwik\Plugins\Login\Controller
      */
     public function authcode($messageNoAccess = null)
     {
-        $rememberMe = Common::getRequestVar('form_rememberme', '0', 'string') == '1';
-
         $form = $this->getAuthCodeForm();
         if ($form->getSubmitValue('form_authcode') && $form->validate()) {
             $nonce = $form->getSubmitValue('form_nonce');
@@ -84,8 +82,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
                 $this->auth->setAuthCode($form->getSubmitValue('form_authcode'));
                 if ($this->auth->validateAuthCode()) {
                     try {
-                        $rememberMe = Common::getRequestVar('form_rememberme', '0', 'string') == '1';
-                        $this->authenticateAndRedirect($this->auth->getLogin(), null, $rememberMe);
+                        $this->authenticateAndRedirect($this->auth->getLogin(), null);
                     } catch (\Exception $e) {
                     }
                 }
@@ -97,18 +94,17 @@ class Controller extends \Piwik\Plugins\Login\Controller
             }
         }
 
-        return $this->renderAuthCode($this->auth->getLogin(), Piwik::translate('Login_LogIn'), $rememberMe, $messageNoAccess);
+        return $this->renderAuthCode($this->auth->getLogin(), Piwik::translate('Login_LogIn'), $messageNoAccess);
     }
 
     /**
      * Renders form to ask user for an auth code
      *
      * @param string $login
-     * @param int $rememberMe
      * @param string $messageNoAccess
      * @return string
      */
-    public function renderAuthCode($login, $formTitle, $rememberMe = 0, $messageNoAccess = null)
+    public function renderAuthCode($login, $formTitle, $messageNoAccess = null)
     {
         $view = new View('@GoogleAuthenticator/authcode');
         $view->logouturl = Url::getCurrentUrlWithoutQueryString() . '?' . Url::getQueryStringFromParameters(array(
@@ -119,7 +115,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
         $view->formTitle = $formTitle;
         $view->AccessErrorString = $messageNoAccess;
         $view->infoMessage = Piwik::translate('GoogleAuthenticator_AuthCodeRequired');
-        $view->rememberMe = $rememberMe;
+        $view->rememberMe = Common::getRequestVar('form_rememberme', '0', 'string') == '1';
         $this->configureView($view);
         $view->addForm($this->getAuthCodeForm());
         self::setHostValidationVariablesView($view);
@@ -155,9 +151,8 @@ class Controller extends \Piwik\Plugins\Login\Controller
                 $loginOrEmail = $form->getSubmitValue('form_login');
                 $login = $this->getLoginFromLoginOrEmail($loginOrEmail);
                 $password = $form->getSubmitValue('form_password');
-                $rememberMe = $form->getSubmitValue('form_rememberme') == '1';
                 try {
-                    $this->authenticateAndRedirect($login, $password, $rememberMe);
+                    $this->authenticateAndRedirect($login, $password);
                 } catch (AuthCodeRequiredException $e) {
                     return $this->authcode();
                 } catch (\Exception $e) {
@@ -221,7 +216,7 @@ class Controller extends \Piwik\Plugins\Login\Controller
             }
 
             if (!$authCodeValidOrNotRequired) {
-                return $this->renderAuthCode($login, Piwik::translate('General_ChangePassword'), 0, $messageNoAccess);
+                return $this->renderAuthCode($login, Piwik::translate('General_ChangePassword'), $messageNoAccess);
             }
         }
 
