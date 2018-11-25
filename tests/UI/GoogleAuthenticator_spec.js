@@ -81,7 +81,7 @@ describe("GoogleAuthenticator", function () {
     });
 
     it("should login successfully without token auth", function (done) {
-        expect.current_page.contains(".site-without-data", function (page) {
+        expect.current_page.contains(".site-without-data", "login_success", function (page) {
             page.sendKeys("#login_form_authcode", "123456");
             page.click("#login_form_submit", 1000);
         }, done);
