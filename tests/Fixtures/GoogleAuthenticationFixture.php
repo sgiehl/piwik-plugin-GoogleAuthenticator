@@ -7,6 +7,8 @@
  */
 namespace Piwik\Plugins\GoogleAuthenticator\tests\Fixtures;
 
+use Piwik\DbHelper;
+use Piwik\Plugins\UsersManager\API;
 use Piwik\Tests\Framework\Fixture;
 
 class GoogleAuthenticationFixture extends Fixture
@@ -18,5 +20,8 @@ class GoogleAuthenticationFixture extends Fixture
         self::updateDatabase();
 
         self::createWebsite("2012-01-01 00:00:00");
+        self::createSuperUser();
+        DbHelper::createAnonymousUser();
+        API::getInstance()->setSuperUserAccess('superUserLogin', true);
     }
 }
