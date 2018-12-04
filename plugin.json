@@ -7,7 +7,7 @@
   "license": "BSD AND GPL-3.0+",
   "homepage": "https://github.com/sgiehl/piwik-plugin-GoogleAuthenticator",
   "require": {
-    "piwik": ">=3.6.0-b4,<4.8.0-b3",
+    "piwik": ">=3.6.0-b4,<3.8.0-b3",
     "php": ">=5.5"
   },
   "authors": [
