@@ -1,7 +1,11 @@
 # Piwik Google Authenticator Plugin
 
 [![Build Status](https://travis-ci.org/sgiehl/piwik-plugin-GoogleAuthenticator.png?branch=master)](https://travis-ci.org/sgiehl/piwik-plugin-GoogleAuthenticator)
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=sgiehl&url=https://github.com/sgiehl/piwik-plugin-GoogleAuthenticator&title=Piwik Plugin GoogleAuthenticator=&tags=github&category=software) 
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=sgiehl&url=https://github.com/sgiehl/piwik-plugin-GoogleAuthenticator&title=Piwik+Plugin+GoogleAuthenticator=&tags=github&category=software)
+
+## :bangbang: This plugin is deprecated :bangbang:
+
+As Matomo 3.8.0-b3 two factor authentication is integrated in core. Updating Matomo will automatically disable this plugin and migrate already setup 2FA settings.
 
 
 ## Description
